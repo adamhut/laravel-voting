@@ -19,7 +19,9 @@
 
         <div class="mx-4 flex flex-col ">
             <h4 class="text-xl font-semibold">
-                <a href="#" class="hover:underline">A rondom title can go here</a>
+                <a href="#" class="hover:underline">
+                    A rondom title can go here
+                </a>
             </h4>
             <div class="text-gray-700 mt-3 text-xs line-clamp-3 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga eveniet odit, similique, nobis velit
@@ -65,7 +67,9 @@
                 </div>
                 <div class="flex items-center space-x-2 mt-6 ">
                     <button
-                        class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-24 h-7 py-2 px-4">Open</button>
+                        class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-24 h-7 py-2 px-4">
+                        Open
+                    </button>
                     <button
                         class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in px-3 py-2">
                         <svg fill="currentColor" width="24" height="6">
