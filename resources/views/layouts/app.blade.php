@@ -99,7 +99,7 @@
                             <div class="flex items-center justify-between space-x-3">
                                 <button 
                                     type="button"
-                                    class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-3 py-5"
+                                    class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" 
                                         fill="none" 
@@ -112,7 +112,7 @@
                                     <span class="ml-1">Attach</span>
                                 </button>
                                 <button type="submit"
-                                    class="flex items-center justify-center w-1/2 h-11 text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-3 py-5 text-white">
+                                    class="flex items-center justify-center w-1/2 h-11 text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white">
                                     <span >Submit</span>
                                 </button>
                             </div>
