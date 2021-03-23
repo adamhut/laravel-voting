@@ -124,23 +124,24 @@
             </button>
         </div>
     </div><!-- end button-container-->
-    <div class="comments-container space-y-6 ml-22">
-        <div class="idea-container mt-4 bg-white rounded-xl flex">
+    <div class="comments-container relative space-y-6 pt-4 mt-1 ml-22">
+        <div class="is-admin comment-container relative  mt-4 bg-white rounded-xl flex">
             <div class="flex-1 flex px-4 py-6">
                 <div class="flex-none">
                     <a href="#">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
                             class="w-14 h-14 rounded-xl">
                     </a>
+                    <div class="text-center text-blue uppercase text-xxs font-bold mt-2">Admin</div>
                 </div>
         
                 <div class="mx-4 w-full flex-1 flex flex-col ">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">
-                            A rondom title can go here
+                            Status Changed to "Under Construction"
                         </a>
                     </h4>
-                    <div class="text-gray-700 mt-3 text-xs line-clamp-3 ">
+                    <div class="text-gray-700  text-xs line-clamp-3 ">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga eveniet odit, similique, nobis velit
                         autem deleniti ipsam cumque incidunt hic minus eum facere voluptate officia. Culpa officia perferendis
                         illum? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, nulla odio eveniet eligendi
@@ -176,13 +177,9 @@
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center text-xxs font-semibold space-x-2 text-gray-400">
-                            <span class="font-bold text-gray-800">John Doe</span>
+                            <span class="font-bold text-blue">Andrea</span>
                             <span>&bull;</span>
                             <span>10 hours ago </span>
-                            <span>&bull;</span>
-                            <span>Category 1</span>
-                            <span>&bull;</span>
-                            <span class="text-gray-900">3 Comments</span>
                         </div>
                         <div class="flex items-center space-x-2 mt-6 ">
                             <button
@@ -211,7 +208,9 @@
                 </div>
             </div>
         </div>
-        <!--end idea-container-->
+        <!--end comment-container-->
+        <x-comment-container></x-comment-container>
+        <x-comment-container></x-comment-container>
         
-    </div><!-- comments-contianer-->
+    </div><!-- end comments-contianer-->
 </x-app-layout>
