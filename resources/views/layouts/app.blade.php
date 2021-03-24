@@ -152,7 +152,5 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ad vel deserunt expedita eveniet similique eum cum voluptates, exercitationem recusandae, maxime perferendis. Minus tempore neque voluptate nobis ullam fuga rerum.
             </div> --}}
         </main>
-
-
     </body>
 </html>
