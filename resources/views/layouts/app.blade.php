@@ -17,13 +17,13 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased text-gray-900 text-sm bg-gray-background" >
-        <header class="flex item-center justify-between px-8 py-4">
+        <header class="flex flex-col md:flex-row  item-center justify-between px-8 py-4">
             <a href="#">
                 <img src="{{asset('images/logo.svg')}}" alt="Laracasts Logo" class="">
             </a>
-            <div class="flex items-center"> 
+            <div class="mt-2 md:mt-0 flex items-center"> 
                 @if (Route::has('login'))
-                    <div class=" px-6 py-4 sm:block">
+                    <div class="px-4 md:px-6 py-4 sm:block">
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -53,10 +53,10 @@
                 </div>
             </div>
         </header>
-        <main class="container mx-auto flex max-w-custom">
-            <div class="w-70" style=""> 
+        <main class="container mx-auto flex max-w-custom flex-col md:flex-row">
+            <div class="w-70 mx-auto md:mx-0" style=""> 
                 <div 
-                    class="border border-blue rounded-lg mt-16 bg-white"
+                    class=" border border-blue rounded-lg md:mt-16 bg-white md:sticky md:top-9"
                     style="
                           border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
                             border-image-slice: 1;
@@ -120,8 +120,8 @@
                     </form>
                 </div>                
             </div>
-            <div class="w-175 ml-5" style="max-width:700px; margin-left:20px ">
-                <nav class="flex items-center justify-between text-xs">
+            <div class="w-full md:w-175 px-2 md:px-0  md:ml-5" style="max-width:700px; margin-left:20px ">
+                <nav class="hidden md:flex items-center justify-between text-xs ">
                     <ul class="flex uppercase font-semibold border-b-4  pb-3 space-x-10">
                         <li >
                             <a href="#" class="border-b-4 pb-3 border-blue">All Ideas(87)</a>
