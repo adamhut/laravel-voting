@@ -71,7 +71,7 @@
                     class="flex items-center space-x-2 mt-6 "
                     x-data="{isOpen:false}"
                     @click.away="isOpen=false"
-                    x-cloak=""
+                    x-cloak
                     @keydown.escape.window="isOpen=false"
                 >
                     

@@ -70,7 +70,7 @@
                     <div
                         x-data="{isOpen:false}"
                         @click.away="isOpen=false"
-                        x-cloak=""
+                        x-cloak
                         @keydown.escape.window="isOpen=false"
                         class="flex items-center space-x-2 mt-6"
                     >
@@ -114,7 +114,7 @@
                 class="relative"
                 x-data="{isOpen:false}"
                 @click.away="isOpen=false"
-                x-cloak=""
+                x-cloak
                 @keydown.escape.window="isOpen=false"
             >
                 <button type="button"
@@ -124,7 +124,7 @@
                 </button> 
                 <div 
                     class="absolute z-10 w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2 "
-                    x-show.transition.orgin.top.left.duration.500ms="isOpen"x-show
+                    x-show.transition.orgin.top.left.duration.500ms="isOpen"
                 >
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div>
@@ -160,7 +160,7 @@
                 class="relative"
                 x-data="{isOpen:false}"
                 @click.away="isOpen=false"
-                x-cloak=""
+                x-cloak
                 @keydown.escape.window="isOpen=false"
             >
                 <button type="button"
@@ -315,7 +315,7 @@
                             class="flex items-center space-x-2 mt-6"
                             x-data="{isOpen:false}"
                             @click.away="isOpen=false"
-                            x-cloak=""
+                            x-cloak
                             @keydown.escape.window="isOpen=false"
                         >
                             <button
@@ -328,7 +328,7 @@
                                         style="color: rgba(163, 163, 163, .5)">
                                 </svg>
                                 <ul 
-                                    x-show.transition.orgin.top.left.duration.500ms="isOpen"
+                                    x-show.transition.orgin.top.left.duration.500ms="isOpen" 
                                     class="ml-8 w-44 absolute z-10 font-semibold bg-white shadow-card rounded-xl py-3 text-left">
                                     <li><a href="#"
                                             class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">

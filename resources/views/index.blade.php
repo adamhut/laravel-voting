@@ -71,7 +71,7 @@
                             class="flex items-center space-x-2 mt-6 "
                             x-data="{isOpen:false}"
                             @click.away="isOpen=false"
-                            x-cloak=""
+                            x-cloak
                             @keydown.escape.window="isOpen=false"
                         >
                             <button class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-24 h-7 py-2 px-4">Open</button>
