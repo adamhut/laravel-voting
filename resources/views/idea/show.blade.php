@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex items-center justify-between">
-        <a href="/" class="hidden md:flex items-center font-semibold hover:underline">
+        <a href="{{ route('idea.index')}}" class="hidden md:flex items-center font-semibold hover:underline">
             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -21,48 +21,17 @@
             <div class="mx-2 md:mx-4 w-full flex-1 flex flex-col justify-between ">
                 <h4 class="text-xl font-semibold mt-2 md:mt-0">
                     <a href="#" class="hover:underline">
-                        A rondom title can go here
+                        {{ $idea->title }}
                     </a>
                 </h4>
                 <div class="text-gray-700 mt-3 text-xs line-clamp-3 px-2 md:px-0">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga eveniet odit, similique, nobis velit
-                    autem deleniti ipsam cumque incidunt hic minus eum facere voluptate officia. Culpa officia perferendis
-                    illum? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, nulla odio eveniet eligendi
-                    facilis at, qui autem voluptatibus, omnis saepe voluptatem accusantium asperiores nisi quod aperiam
-                    pariatur aliquid culpa corrupti.
-                    Dignissimos, nihil natus suscipit sit quas doloremque mollitia. Tenetur quod, repellendus corrupti
-                    doloribus sequi quaerat porro inventore sapiente sint veritatis tempora cumque repellat architecto eaque
-                    debitis ratione laborum possimus velit!
-                    Fuga aliquam animi hic sequi reiciendis accusantium, labore quas dolores esse dignissimos officiis
-                    aspernatur. Alias aspernatur nam harum aut dicta delectus quaerat, quia vero culpa quis ad eaque, eius
-                    perferendis.
-                    Similique quasi eligendi ad aspernatur repudiandae adipisci ipsam doloribus eaque quisquam accusantium
-                    ratione blanditiis veritatis placeat velit aut debitis, nesciunt itaque ex tenetur, dolorem facilis,
-                    quidem nulla sequi? Blanditiis, iste!
-                    Aliquid doloremque laboriosam totam incidunt libero distinctio ipsum commodi, quasi minima
-                    exercitationem, magni minus error quibusdam in quaerat corrupti veniam repellendus beatae molestiae
-                    culpa vel? Assumenda officia corrupti praesentium mollitia.
-                    Corporis, placeat distinctio saepe optio, reprehenderit recusandae quo id quod incidunt nam vero quia
-                    deleniti aut, laudantium totam sit consequatur accusantium sunt! Sunt, libero debitis rerum voluptates
-                    sequi fugit vitae?
-                    Consequuntur, reiciendis itaque asperiores ab ipsam harum voluptatem placeat nulla eum unde molestias
-                    quod aperiam, rerum ut iste laboriosam cum! Ipsam esse veniam voluptatibus dolorem optio, distinctio
-                    aspernatur consequuntur facere.
-                    Dolore incidunt, dolor consequatur adipisci magnam odio optio ducimus vitae ab totam quo quas et odit
-                    corrupti nulla, asperiores neque hic doloribus? Fuga excepturi, reiciendis deserunt nesciunt hic magni
-                    earum.
-                    Id aperiam, saepe incidunt nisi, qui impedit optio laudantium, quasi sapiente eligendi dolor minus
-                    eveniet iste quam rem a atque suscipit. Aliquam impedit repudiandae vel velit dolore sint, inventore
-                    quis!
-                    Eum, voluptates quas. Voluptas doloremque error, ipsum perferendis debitis repellat nisi, suscipit aut
-                    modi ratione possimus minima distinctio quae impedit! Tempora accusantium consequuntur aliquid facilis
-                    harum culpa ducimus tempore veniam?
+                   {{ $idea->description }}
                 </div>
                 <div class="flex flex-col md:flex-row md:items-center justify-between">
                     <div class="flex items-center text-xxs font-semibold space-x-2 text-gray-400 mt-3 md:mt-0">
-                        <span class="hidden md:block font-bold text-gray-800">John Doe</span>
+                        <span class="hidden md:block font-bold text-gray-800 ">{{ $idea->user->name }}</span>
                         <span class="hidden md:block">&bull;</span>
-                        <span>10 hours ago </span>
+                        <span>{{ $idea->created_at->diffForHumans() }} </span>
                         <span>&bull;</span>
                         <span>Category 1</span>
                         <span>&bull;</span>

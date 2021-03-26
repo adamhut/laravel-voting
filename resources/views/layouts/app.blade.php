@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <livewire:styles />
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -152,5 +153,6 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ad vel deserunt expedita eveniet similique eum cum voluptates, exercitationem recusandae, maxime perferendis. Minus tempore neque voluptate nobis ullam fuga rerum.
             </div> --}}
         </main>
+        <livewire:scripts />
     </body>
 </html>
