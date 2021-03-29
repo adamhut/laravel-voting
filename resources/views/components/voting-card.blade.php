@@ -22,7 +22,7 @@
         <div class="mx-2 md:mx-4 w-full flex-1 flex flex-col ">
             <h4 class="text-xl font-semibold">
                 <a href="#" class="hover:underline">
-                    A rondom title can go here
+                    A rondom title can go here {{$alertType}}
                 </a>
             </h4>
             <div class="text-gray-700 mt-3 text-xs line-clamp-3 px-2 md:px-0 ">

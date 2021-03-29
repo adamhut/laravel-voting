@@ -112,8 +112,8 @@
         <div class="my-8">
             {{ $ideas->links() }}
         </div>
-        {{-- <x-voting-card></x-voting-card>
-        <x-voting-card></x-voting-card>
+         {{-- <x-voting-card alert-type="camerl good"></x-voting-card> --}}
+        {{--<x-voting-card></x-voting-card>
         <x-voting-card></x-voting-card> --}}
     </div><!--end ideas-container-->
 
