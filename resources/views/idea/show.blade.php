@@ -13,8 +13,9 @@
         <div class="flex-1 flex flex-col md:flex-row px-4 py-6">
             <div class="flex-none mx-2 md:mx-0 ">
                 <a href="#">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
-                        class="w-14 h-14 rounded-xl">
+                    {{-- <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                        class="w-14 h-14 rounded-xl"> --}}
+                    <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
                 </a>
             </div>
     
@@ -242,6 +243,7 @@
                     <a href="#">
                         <img src="https://source.unsplash.com/200x200/?face&crop=face&v=3" alt="avatar"
                             class="w-14 h-14 rounded-xl">
+                        {{-- <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl"> --}}
                     </a>
                     <div class="md:text-center text-blue uppercase text-xxs font-bold mt-2">Admin</div>
                 </div>
