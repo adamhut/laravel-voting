@@ -24,6 +24,11 @@ class Idea extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -36,6 +41,22 @@ class Idea extends Model
                 'source' => 'title'
             ]
         ];
+    }
+
+
+    public function getStatusClasses()
+    {
+        
+        // $allSatatuses =[
+        //     'Open'          => ' bg-gray-200 ',
+        //     'Considering'   => ' bg-purple text-white ',
+        //     'In Progress'   => ' bg-yellow text-white ',
+        //     'Closed'        => ' bg-red text-white ',
+        //     'Implemented'   => ' bg-green text-white ',
+        // ];
+
+        // return array_key_exists($this->status->name, $allSatatuses) ?  $allSatatuses[$this->status->name]:' bg-gray-200 ';
+
     }
 
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Idea;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
-class IdeaController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $ideas= Idea::with('category','user','status')
-            ->simplePaginate(Idea::PAGINATION_COUNT);
-
-
-        return view('idea.index',compact('ideas'));
+        //
     }
 
     /**
@@ -39,27 +35,27 @@ class IdeaController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function show(Idea $idea)
+    public function show(Status $status)
     {
-        return view('idea.show', compact('idea'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function edit(Idea $idea)
+    public function edit(Status $status)
     {
         //
     }
@@ -68,10 +64,10 @@ class IdeaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Idea $idea)
+    public function update(Request $request, Status $status)
     {
         //
     }
@@ -79,10 +75,10 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Idea  $idea
+     * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Idea $idea)
+    public function destroy(Status $status)
     {
         //
     }

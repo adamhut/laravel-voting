@@ -45,10 +45,7 @@
                         @keydown.escape.window="isOpen=false"
                         class="flex items-center space-x-2 mt-4 md:mt-0"
                     >
-                        <button
-                            class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-24 h-7 py-2 px-4">
-                            Open
-                        </button>
+                        <div class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-3">{{ $idea->status->name }}</div>
                         <button
                             class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in border px-3 py-2"
                             @click="isOpen = !isOpen"   
@@ -163,7 +160,7 @@
                             <div>
                                 <label class="inline-flex items-center">
                                     <input type="radio" checked="" name="radio-direct" class="bg-gray-200 border-none text-gray-600" value="1" data-fillr-id="1998062331">
-                                    <span class="ml-2">open</span>
+                                    <span class="ml-2">Open</span>
                                 </label>
                             </div>
                             <div>
