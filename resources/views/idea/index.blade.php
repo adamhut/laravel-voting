@@ -92,7 +92,7 @@
                             <div class="flex items-center text-xxs font-semibold space-x-0 md:space-x-2 text-gray-400">
                                 <span>{{ $idea->created_at->diffForHumans() }} </span>
                                 <span>&bull;</span>
-                                <span>Category 1</span>
+                                <span>{{ $idea->category->name }}</span>
                                 <span>&bull;</span>
                                 <span class="text-gray-900">3 Comments</span>
                             </div>
