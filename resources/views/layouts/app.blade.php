@@ -68,57 +68,29 @@
                 >
                     <div class="text-center px-6 py-2 pt-4">
                         <h3 class="font-semibold text-base">Add an idea</h3>
-                        <p class="text-xs mt-3">Let us know what you would like and we will take a look over! </p>
+                        <p class="text-xs mt-3">
+                        @auth
+                            Let us know what you would like and we will take a look over! 
+                        @else   
+                            Please login to create an idea
+                        @endauth    
+                        </p>
                     </div>
-                    <form action="#" method="POST" class="space-y-4 px-4 py-6 ">
-                        <div>
-                            <input 
-                                type="text" 
-                                class="w-full bg-gray-100 rounded-lg py-2 px-4 border-none shadow-sm placeholder-gray-900 text-sm" 
-                                placeholder="Your idea"
-                            >
+
+                    @auth
+                        <livewire:create-idea></livewire:create-idea>
+                    @else
+                        <div class="my-6 text-center">
+                            <a href="{{route('login')}}"
+                                class="inline-block mt-2 w-1/2 h-11 text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white">
+                                Login
+                            </a>
+                            <a href="{{route('register')}}"
+                                class=" inline-block mt-2 w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
+                                Sign Up
+                            </a>
                         </div>
-                        <div class="">
-                            <select name="category_add" id="category_add" class="w-full bg-gray-100 rounded-lg placeholder-gray-900 py-2 border-none shadow-sm text-sm">
-                                <option value="Category 1">Category 1</option>
-                                <option value="Category 2">Category 2</option>
-                                <option value="Category 3">Category 3</option>
-                            </select>
-                        </div>
-                        <div>
-                            <textarea 
-                                name="idea" 
-                                id="idea" 
-                                cols="30" 
-                                rows="4" 
-                                class="w-full bg-gray-100 rounded-lg placeholder-gray-900 text-sm px-4 py-2 border-none"
-                                placeholder="Describe Your idea" 
-                            >
-                            </textarea>
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-between space-x-3">
-                                <button 
-                                    type="button"
-                                    class="flex items-center justify-center w-1/2 h-11 text-xs bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" 
-                                        fill="none" 
-                                        viewBox="0 0 24 24" stroke="currentColor"
-                                        class="w-4 h-4 transform -rotate-45 text-gray-600"
-                                    >
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                                    </svg>
-                                    <span class="ml-1">Attach</span>
-                                </button>
-                                <button type="submit"
-                                    class="flex items-center justify-center w-1/2 h-11 text-xs bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white">
-                                    <span >Submit</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    @endauth                    
                 </div>                
             </div>
             <div class="w-full md:w-175 px-2 md:px-0  md:ml-5" style="max-width:700px; margin-left:20px ">
