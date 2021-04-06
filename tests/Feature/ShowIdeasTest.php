@@ -105,16 +105,16 @@ class ShowIdeasTest extends TestCase
         $response = $this->get(route('idea.index'));
 
         $this->assertCount(11,Idea::all());
-        $response->assertSee($ideaOne->title);
-        $response->assertSee($category1->name);
-        $response->assertDontSee($ideaEleven->title);
+        $response->assertDontSee($ideaOne->title);
+        $response->assertDontSee($category1->name);
+        $response->assertSee($ideaEleven->title);
         // $response->assertSee($statusOpen->name);
         $response->assertSee('<div class=" bg-gray-200  text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>', false);
 
 
         $response = $this->get('/?page=2');
-        $response->assertSee($ideaEleven->title);
-        $response->assertDontSee($ideaOne->title);
+        $response->assertDontSee($ideaEleven->title);
+        $response->assertSee($ideaOne->title);
 
     }
 
