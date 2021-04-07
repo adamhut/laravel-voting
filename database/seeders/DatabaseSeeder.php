@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,9 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->create([
+            'name'=>'adam',
+            'email' =>'adamhut@gmail.com',
+            // 'password' => bcrypt('secret'),
+        ]);
+        User::factory(19)->create();
         $this->call(CategorySeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(IdeaSeeder::class);
+
+        //generate unique votes, ensure idea_id and user_id are uqique foreach row
+        $this->call(VoteSeeder::class);
     }
 }
