@@ -34,6 +34,36 @@ class Idea extends Model
         return $this->belongsToMany(User::class,'votes');
     }
 
+    public function isVotedByUser(User $user=null)
+    {
+        if(!$user){
+            return false;
+        }
+
+
+        return Vote::where('idea_id',$this->id)
+            ->where('user_id',$user->id)
+            ->exists();
+
+        // return true;
+    }
+
+    public function scopeWithVotedByUser($query,User $user=null)
+    {
+     
+        if (!$user) {
+            return $query;
+        }
+       
+        return $query->addSelect([
+            'voted_by_user' => Vote::select('id')
+            ->whereColumn('idea_id', 'ideas.id')
+            ->where('user_id', $user->id)
+            ->limit(1)
+        ]);
+
+    }
+
 
     /**
      * Return the sluggable configuration array for this model.

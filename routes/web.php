@@ -13,7 +13,7 @@ use App\Http\Controllers\IdeaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// auth()->logout();
 // Route::get('/', function () {
 //     return view('index');
 // });

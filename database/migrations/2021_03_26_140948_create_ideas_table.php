@@ -17,7 +17,7 @@ class CreateIdeasTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('status_id')->constrained();
+            $table->foreignId('status_id')->constrained('statuses');
             $table->string('title');
             $table->string('slug')->nullable();
             $table->text('description');

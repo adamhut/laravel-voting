@@ -16,10 +16,11 @@ class IdeaController extends Controller
     {
         $ideas= Idea::with('category','user','status')
             ->withCount('votes')
+            ->withVotedByUser(auth()->user())
             ->orderBy('id','desc')
             ->simplePaginate(Idea::PAGINATION_COUNT);
 
-
+        // dd($ideas);
         return view('idea.index',compact('ideas'));
     }
 
