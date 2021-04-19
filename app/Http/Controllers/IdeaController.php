@@ -14,14 +14,17 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $ideas= Idea::with('category','user','status')
-            ->withCount('votes')
-            ->withVotedByUser(auth()->user())
-            ->orderBy('id','desc')
-            ->simplePaginate(Idea::PAGINATION_COUNT);
+        // $ideas= Idea::with('category','user','status')
+        //     ->withCount('votes')
+        //     ->withVotedByUser(auth()->user())
+        //     ->orderBy('id','desc')
+        //     ->simplePaginate(Idea::PAGINATION_COUNT);
 
         // dd($ideas);
-        return view('idea.index',compact('ideas'));
+
+        // return view('idea.index',compact('ideas'));
+
+        return view('idea.index');
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\IdeaIndex;
 use Tests\TestCase;
 use App\Models\Idea;
 use App\Models\User;
@@ -10,6 +9,8 @@ use App\Models\Vote;
 use App\Models\Status;
 use Livewire\Livewire;
 use App\Models\Category;
+use App\Http\Livewire\IdeaIndex;
+use App\Http\Livewire\IdeasIndex;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -41,7 +42,7 @@ class VoteIndexPageTest extends TestCase
 
 
     /** @test */
-    public function index_page_correctly_receives_votes_count()
+    public function ideas_index_livewire_component_page_correctly_receives_votes_count()
     {
         $user = User::factory()->create();
         $userB = User::factory()->create();
@@ -68,10 +69,18 @@ class VoteIndexPageTest extends TestCase
         ]);
 
 
-        $this->get(route('idea.index'))
-            ->assertViewHas('ideas', function($ideas){
+        // $this->get(route('idea.index'))
+        //     ->assertViewHas('ideas', function($ideas){
+        //         return $ideas->first()->votes_count == 2;
+        //     });
+        // return ;
+        Livewire::test(IdeasIndex::class)
+            ->assertViewHas('ideas',function ($ideas) {
+                // return true;
+                // return $ideas->first()->votes()->count();
                 return $ideas->first()->votes_count == 2;
             });
+
     }
 
 
@@ -128,16 +137,18 @@ class VoteIndexPageTest extends TestCase
         ]);
 
 
-        $response = $this->actingAs($user)->get(route('idea.index'));
-    
-        $ideaWithVotes = $response['ideas']->items()[0];
+        // $response = $this->actingAs($user)->get(route('idea.index'));
+        // $ideaWithVotes = $response['ideas']->items()[0];
+
+        $idea->votes_count = 1;
+        $idea->voted_by_user = 1;
 
         // dd($ideaWithVotes);
 
         Livewire::test(IdeaIndex::class, [
-            'idea' => $ideaWithVotes,
-            'votesCount' => 5,
-        ])
+                'idea' => $idea,
+                'votesCount' => 5,
+            ])
             ->assertSet('votesCount', 5)
             ->assertSee('Voted');
     }
@@ -176,6 +187,46 @@ class VoteIndexPageTest extends TestCase
             ->assertRedirect(route('login'));
     }
 
+
+    /** @test */
+    public function user_who_is_logged_in_can_remove_vote_for_idea()
+    {
+        $user = User::factory()->create();
+        $categoryOne = Category::factory()->create(['name' => 'category1']);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+
+        $idea = Idea::factory()->create([
+            'user_id' => $user->id,
+            'title' => 'My first idea',
+            'category_id'   => $categoryOne->id,
+            'status_id'     =>  $statusOpen->id,
+            'description' => 'Description of my first idea',
+        ]);
+
+        Vote::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+        ]);
+
+
+        // $response = $this->actingAs($user)->get(route('idea.index'));
+        // $ideaWithVotes = $response['ideas']->items()[0];
+        $idea->votes_count = 1;
+        $idea->voted_by_user = 1;
+
+        Livewire::actingAs($user)
+            ->test(IdeaIndex::class,[
+                'idea' => $idea,
+                'votesCount' => 5,
+            ])
+            ->call('vote')
+            ->assertSet('votesCount',4)
+            ->assertSet('hasVoted', false)
+            ->assertsee('Vote')
+            ->assertDontSee('Voted');
+
+
+    }
 
     /** @test */
     public function user_who_is_logged_in_can_vote_for_idea()
