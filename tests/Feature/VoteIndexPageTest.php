@@ -208,7 +208,6 @@ class VoteIndexPageTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-
         // $response = $this->actingAs($user)->get(route('idea.index'));
         // $ideaWithVotes = $response['ideas']->items()[0];
         $idea->votes_count = 1;
