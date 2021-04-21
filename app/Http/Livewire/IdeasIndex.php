@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class IdeasIndex extends Component
 {
     // public $ideas;
-    use WithPagination;
+    // use WithPagination;
 
     public function mouted()
     {

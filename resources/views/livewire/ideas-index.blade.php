@@ -39,7 +39,9 @@
             />
         @endforeach
         <div class="my-8">
-            {{ $ideas->links() }}
+            {{-- {{ $ideas->links() }} --}}
+            {{ $idea->appends(request()->query())->links() }}
+
         </div>
         {{-- <x-voting-card alert-type="camerl good"></x-voting-card> --}}
         {{--<x-voting-card></x-voting-card>
