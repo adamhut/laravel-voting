@@ -16,10 +16,13 @@ class IdeasIndex extends Component
     public $status = 'All';
     public $category = '';
 
+    public $filter = '';
+
 
     protected $queryString = [
         'status',
-        'category'
+        'category',
+        'filter',
     ];
 
     protected $listeners =[
@@ -33,12 +36,20 @@ class IdeasIndex extends Component
         // $this->category = request()->get('status', 'All Categories');
     }
 
-    // public function updatingStatus()
-    // {
-    //     $this->resetPage();
-    // }
+    public function updatedFilter()
+    {
+        if($this->filter ==='My Ideas' && !auth()->check())
+        {
+            return redirect()->route('login');
+        }
+    }
 
     public function updatingCategory()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingFilter()
     {
         $this->resetPage();
     }
@@ -65,7 +76,13 @@ class IdeasIndex extends Component
             })
             ->when($this->category && $this->category !== 'All Categories', function ($query) use ($categories) {
                 return $query->where('category_id', $categories->pluck('id','name')->get($this->category));
-            })      
+            })
+            ->when($this->filter  && $this->filter === 'Top Voted',  function ($query) {
+                return $query->orderByDesc('votes_count');
+            }) 
+            ->when($this->filter && auth()->check() && $this->filter === 'My Ideas',  function ($query) {
+                return $query->where('user_id',auth()->user()->id);
+            })                  
             ->orderBy('id', 'desc')
             ->simplePaginate(Idea::PAGINATION_COUNT);
         return view('livewire.ideas-index',[
