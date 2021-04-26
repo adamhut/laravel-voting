@@ -17,12 +17,14 @@ class IdeasIndex extends Component
     public $category = '';
 
     public $filter = '';
+    public $search = '';
 
 
     protected $queryString = [
         'status',
         'category',
         'filter',
+        'search'
     ];
 
     protected $listeners =[
@@ -50,6 +52,11 @@ class IdeasIndex extends Component
     }
 
     public function updatingFilter()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearch()
     {
         $this->resetPage();
     }
@@ -82,7 +89,10 @@ class IdeasIndex extends Component
             }) 
             ->when($this->filter && auth()->check() && $this->filter === 'My Ideas',  function ($query) {
                 return $query->where('user_id',auth()->user()->id);
-            })                  
+            })
+            ->when($this->search  && strlen($this->search) >=  '3',  function ($query) {
+                return $query->where('title','like','%'.$this->search.'%');
+            })               
             ->orderBy('id', 'desc')
             ->simplePaginate(Idea::PAGINATION_COUNT);
         return view('livewire.ideas-index',[

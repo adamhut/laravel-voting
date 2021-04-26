@@ -171,18 +171,16 @@ class VoteIndexPageTest extends TestCase
         ]);
 
 
-       
+        // $response = $this->get(route('idea.index'));
 
-        $response = $this->get(route('idea.index'));
-
-        $ideaWithVotes = $response['ideas']->items()[0];
+        // $ideaWithVotes = $response['ideas']->items()[0];
 
         // dd($ideaWithVotes);
 
         Livewire::test(IdeaIndex::class, [
-            'idea' => $ideaWithVotes,
-            'votesCount' => 5,
-        ])
+                'idea' => $idea,
+                'votesCount' => 5,
+            ])
             ->call('vote')
             ->assertRedirect(route('login'));
     }

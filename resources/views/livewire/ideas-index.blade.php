@@ -21,7 +21,10 @@
             </select>
         </div>
         <div class="w-full md:w-2/3 relative">
-            <input type="search" placeholder="Find an Ideas"
+            <input 
+                wire:model="search"
+                type="search" 
+                placeholder="Find an Ideas"
                 class="w-full rounded-xl bg-white border-none px-4 py-2 pl-8 placeholder-gray-900">
             <div class="absolute top-0 flex items-center h-full ml-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 text-gray-700" fill="none" viewBox="0 0 24 24"
@@ -36,14 +39,25 @@
     <!--End Filters-->
     
     <div class="my-6 ideas-container space-y-6 ">
-        @foreach($ideas as $idea)
+        @forelse ($ideas as $idea)
             <livewire:idea-index 
-                :key="$idea->id"
+                :key="$idea->id" 
                 :idea="$idea" 
                 :votesCount="$idea->votes_count" 
-
             />
-        @endforeach
+        @empty
+            <div class="mx-auto w-70 mt-12 ">
+                <img 
+                    src="{{ asset('images/no-ideas.svg') }}" 
+                    alt="No Ideas" 
+                    class="mx-auto" 
+                    style="mix-blend-mode: luminosity"
+                >
+                <div class="text-gray-400 text-center font-bold mt-6">No ideas were found...</div>
+                
+            </div>    
+
+        @endforelse
         <div class="my-8">
             {{ $ideas->links() }}
             {{-- {{ $ideas->appends(request()->query())->links() }} --}}
