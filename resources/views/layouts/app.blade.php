@@ -19,7 +19,7 @@
     </head>
     <body class="font-sans antialiased text-gray-900 text-sm bg-gray-background" >
         <header class="flex flex-col md:flex-row  item-center justify-between px-8 py-4">
-            <a href="#">
+            <a href="/">
                 <img src="{{asset('images/logo.svg')}}" alt="Laracasts Logo" class="">
             </a>
             <div class="mt-2 md:mt-0 flex items-center"> 

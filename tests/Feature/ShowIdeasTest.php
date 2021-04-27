@@ -166,4 +166,62 @@ class ShowIdeasTest extends TestCase
         
     }
 
+
+    /** @test */
+    public function in_app_back_button_works_when_index_page_vistied_first_idea()
+    {
+        $user = User::factory()->create();
+        $category1 = Category::factory()->create(['name' => 'category 1']);
+        $category2 = Category::factory()->create(['name' => 'category 2']);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-purple text-white ']);
+
+        $idea1 = Idea::factory()->create([
+            'user_id' => $user->id,
+            'title' => 'My first idea',
+            'category_id'   => $category1->id,
+            'status_id'     =>  $statusOpen->id,
+            'description' => 'Description of my first idea',
+        ]);
+        
+        $response = $this->get('/?category=category2&status=Considering');
+
+        $response = $this->get(route('idea.show',$idea1));
+        
+        $this->assertStringContainsString( '/?category=category2&status=Considering', $response['backUrl']);
+        // dd($response['backUrl']);
+        // $response = $this->get(route('idea.index'));
+
+
+    }
+
+
+    /** @test */
+    public function in_app_back_button_works_when_show_page_only_vistied_first()
+    {
+        $user = User::factory()->create();
+        $category1 = Category::factory()->create(['name' => 'category 1']);
+        $category2 = Category::factory()->create(['name' => 'category 2']);
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-purple text-white ']);
+
+        $idea1 = Idea::factory()->create([
+            'user_id' => $user->id,
+            'title' => 'My first idea',
+            'category_id'   => $category1->id,
+            'status_id'     =>  $statusOpen->id,
+            'description' => 'Description of my first idea',
+        ]);
+
+        // $response = $this->get('/?category=category2&status=Considering');
+
+        $response = $this->get(route('idea.show', $idea1));
+
+        $this->assertEquals(route('idea.index'), $response['backUrl']);
+        // dd($response['backUrl']);
+        // $response = $this->get(route('idea.index'));
+
+
+    }
+
 }
