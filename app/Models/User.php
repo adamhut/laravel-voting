@@ -69,4 +69,10 @@ class User extends Authenticatable
             . '&d=https://s3.amazonaws.com/laracasts/images/forum/avatars/default-avatar-'. $integerToUse.'.png';
     }
 
+
+    public function isAdmin()
+    {
+        return in_array($this->email,['adamhut@gmail.com']);
+    }
+
 }
