@@ -84,4 +84,24 @@ class UserTest extends TestCase
     }
 
 
+    /** @test */
+    public function can_check_if_the_user_is_an_admin()
+    {
+        $user = User::factory()->make([
+            'name'=> 'adam',
+            'email' => 'adamhut@gmail.com',
+        ]);
+
+        $userB = User::factory()->make([
+            'name' => 'andra',
+            'email' => 'not_admin@gmail.com',
+        ]);
+
+
+        $this->assertTrue($user->isAdmin());
+        $this->assertFalse($userB->isAdmin());
+
+    }
+
+
 }
