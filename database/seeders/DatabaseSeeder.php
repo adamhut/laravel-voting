@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('secret'),
         ]);
         User::factory(19)->create();
+        
         $this->call(CategorySeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(IdeaSeeder::class);
