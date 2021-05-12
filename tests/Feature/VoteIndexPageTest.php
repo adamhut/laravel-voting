@@ -36,8 +36,6 @@ class VoteIndexPageTest extends TestCase
         $user = User::factory()->create();
         $userB = User::factory()->create();
 
-       
-
         $idea1 = Idea::factory()->create();
 
         Vote::factory()->create([
@@ -50,12 +48,6 @@ class VoteIndexPageTest extends TestCase
             'user_id' => $userB->id,
         ]);
 
-
-        // $this->get(route('idea.index'))
-        //     ->assertViewHas('ideas', function($ideas){
-        //         return $ideas->first()->votes_count == 2;
-        //     });
-        // return ;
         Livewire::test(IdeasIndex::class)
             ->assertViewHas('ideas',function ($ideas) {
                 // return true;
