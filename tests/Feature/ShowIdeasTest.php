@@ -67,7 +67,7 @@ class ShowIdeasTest extends TestCase
 
         $user = User::factory()->create();
         $category1 = Category::factory()->create(['name' => 'category1']);
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusOpen = Status::factory()->create(['name' => 'OpenUnique', 'classes' => ' bg-gray-200 ']);
         // $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-purple text-white ']);
         $idea = Idea::factory()->create([
             'user_id'=>$user->id,
@@ -84,9 +84,9 @@ class ShowIdeasTest extends TestCase
 
         $response->assertSee($idea->title);
         $response->assertSee($idea->description);
-
         $response->assertSee($category1->name);
-        // $response->assertSee($statusOpen->name);
+        
+        $response->assertSee($statusOpen->name);
         // $response->assertSee('<div class=" bg-gray-200  text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-3">Open</div>', false);
 
     }
@@ -100,7 +100,7 @@ class ShowIdeasTest extends TestCase
 
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'OpenUnique', 'classes' => 'bg-gray-200']);
 
         Idea::factory(Idea::PAGINATION_COUNT + 1)->create([
             'user_id' => $user->id,
@@ -120,11 +120,14 @@ class ShowIdeasTest extends TestCase
 
         $response->assertSee($ideaEleven->title);
         $response->assertDontSee($ideaOne->title);
+        $response->assertSee($statusOpen->name);
 
         $response = $this->get('/?page=2');
 
         $response->assertSee($ideaOne->title);
         $response->assertDontSee($ideaEleven->title);
+
+        $response->assertSee($statusOpen->name);
 
     }
 
@@ -173,7 +176,7 @@ class ShowIdeasTest extends TestCase
         $user = User::factory()->create();
         $category1 = Category::factory()->create(['name' => 'category 1']);
         $category2 = Category::factory()->create(['name' => 'category 2']);
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusOpen = Status::factory()->create(['name' => 'OpenUnique', 'classes' => ' bg-gray-200 ']);
         $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-purple text-white ']);
 
         $idea1 = Idea::factory()->create([
@@ -189,6 +192,9 @@ class ShowIdeasTest extends TestCase
         $response = $this->get(route('idea.show',$idea1));
         
         $this->assertStringContainsString( '/?category=category2&status=Considering', $response['backUrl']);
+        
+        // $response->assertDontSee($statusOpen->name);
+        
         // dd($response['backUrl']);
         // $response = $this->get(route('idea.index'));
 

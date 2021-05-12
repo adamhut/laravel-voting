@@ -11,7 +11,12 @@
         
     </div>
 
-    <livewire:idea-show :idea="$idea" :votesCount="$votesCount" />
+    <livewire:idea-show 
+        :idea="$idea" 
+        :votesCount="$votesCount" 
+    />
+    
+    <livewire:edit-idea :idea="$idea"></livewire:edit-idea>
     
     <div class="comments-container relative space-y-6 pt-4 mt-1 md:ml-22">
         <div class="is-admin comment-container relative  mt-4 bg-white rounded-xl flex">

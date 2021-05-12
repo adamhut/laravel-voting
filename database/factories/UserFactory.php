@@ -44,4 +44,18 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    /**
+     * 
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email' => 'adamhut@gmail.com',
+            ];
+        });
+    }
 }
