@@ -11,9 +11,9 @@
 
             <div class="mx-2 w-full flex-1 flex flex-col justify-between ">
                 <h4 class="text-xl font-semibold mt-2 md:mt-0">
-                   
-                        {{ $idea->title }}
-                    
+
+                    {{ $idea->title }}
+
                 </h4>
                 <div class="text-gray-700 mt-3 text-xs line-clamp-3 px-2 md:px-0">
                     {{ $idea->description }}
@@ -28,54 +28,65 @@
                         <span>&bull;</span>
                         <span class="text-gray-900">3 Comments</span>
                     </div>
-                   
+
                     <div x-data="{isOpen:false}" @click.away="isOpen=false" x-cloak
                         @keydown.escape.window="isOpen=false" class="flex items-center space-x-2 mt-4 md:mt-0">
                         <div
                             class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-3">
                             {{ $idea->status->name }}</div>
-                        <button
-                            class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in border px-3 py-2"
-                            @click="isOpen = !isOpen">
-                            <svg fill="currentColor" width="24" height="6">
-                                <path
-                                    d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
-                                    style="color: rgba(163, 163, 163, .5)">
-                            </svg>
+                        <div class="relative">
+
+                            <button
+                                class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in border px-3 py-2"
+                                @click="isOpen = !isOpen">
+                                <svg fill="currentColor" width="24" height="6">
+                                    <path
+                                        d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
+                                        style="color: rgba(163, 163, 163, .5)">
+                                </svg>
+
+                            </button>
                             <ul class="ml-8 w-44 absolute font-semibold bg-white shadow-card rounded-xl py-3 text-left md:ml-8 top-8 right-0 md:left-0 z-10"
                                 x-show.transition.orgin.top.left.duration.500ms="isOpen">
-                                <li><a href="#"
+                                <li>
+                                    <a href="#"
                                         class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
-                                        Mark as Done
+                                        Edit Idea
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="hover:bg-gray-100 text-gray-700 block px-5 py-2 transition duration-150 ease-in ">Delete
-                                        Post</a>
+                                        class="hover:bg-gray-100 text-gray-700 block px-5 py-2 transition duration-150 ease-in ">
+                                        Delete Post
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
+                                        Mark as Spam
+                                    </a>
                                 </li>
                             </ul>
-                        </button>
+                        </div>
                     </div>
                     <div class="flex items-center mt-4 md:hidden md:mt-0">
                         <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
-                            <div class="text-sm font-bold leading-none @if($hasVoted) text-blue @endif">{{ $votesCount }}</div>
+                            <div class="text-sm font-bold leading-none @if($hasVoted) text-blue @endif">
+                                {{ $votesCount }}</div>
                             <div class="text-xxs font-semibold leading-none text-gray-400">votes </div>
                         </div>
                         @if($hasVoted)
-                            <button
-                                wire:click.prevent="vote"
-                                class="w-20 bg-blue border border-blue text-white font-bold text-xxs uppercase rounded-xl hover:border-blue-hover transition duration-150 ease-in px-4 py-3 -mx-5">
-                                Voted
-                            </button>                        
+                        <button wire:click.prevent="vote"
+                            class="w-20 bg-blue border border-blue text-white font-bold text-xxs uppercase rounded-xl hover:border-blue-hover transition duration-150 ease-in px-4 py-3 -mx-5">
+                            Voted
+                        </button>
                         @else
-                            <button
-                                wire:click.prevent="vote"
-                                class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3 -mx-5">
-                                Vote
-                            </button>
+                        <button wire:click.prevent="vote"
+                            class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3 -mx-5">
+                            Vote
+                        </button>
                         @endif
-                        
+
                     </div>
                 </div>
             </div>
@@ -119,9 +130,9 @@
                     </form>
                 </div>
             </div>
-                @if(auth()->check() && auth()->user()->isAdmin())
-                    <livewire:set-status :idea="$idea" ></livewire:set-status>
-                @endif
+            @if(auth()->check() && auth()->user()->isAdmin())
+            <livewire:set-status :idea="$idea"></livewire:set-status>
+            @endif
         </div>
         <div class="hidden md:flex items-center space-x-3 ">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2 shadow-sm">
@@ -130,21 +141,18 @@
             </div>
 
             @if($hasVoted)
-                <button
-                    wire:click.prevent="vote"
-                    class="w-32 bg-blue border border-blue text-white font-bold text-xs uppercase rounded-xl hover:border-blue-hover transition duration-150 ease-in px-4 py-3 -mx-5">
-                    Voted
-                </button>
+            <button wire:click.prevent="vote"
+                class="w-32 bg-blue border border-blue text-white font-bold text-xs uppercase rounded-xl hover:border-blue-hover transition duration-150 ease-in px-4 py-3 -mx-5">
+                Voted
+            </button>
             @else
-                <button 
-                    wire:click.prevent="vote"
-                    type="button"
-                    class="w-32 h-11 text-xs bg-gray-200 font-semibold rounded-xl uppercase border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
-                    <span class="">Vote</span>
-                
-                </button>
+            <button wire:click.prevent="vote" type="button"
+                class="w-32 h-11 text-xs bg-gray-200 font-semibold rounded-xl uppercase border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3">
+                <span class="">Vote</span>
+
+            </button>
             @endif
-            
+
         </div>
     </div><!-- end button-container-->
 

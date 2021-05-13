@@ -1,6 +1,6 @@
-<!-- Start Modal-->
-<!-- This example requires Tailwind CSS v2.0+ -->
 <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    
+
     <div class="flex items-end justify-center min-h-screen ">
         <!--
           Background overlay, show/hide based on modal state.
@@ -27,11 +27,18 @@
         <div
             class="modal  bg-white rounded-tl-xl rounded-tr-xl  overflow-hidden transform transition-all py-4 sm:max-w-lg sm:w-full"
         >
+            <div class="absolute top-0 right-0 pt-4 pr-4">
+                <button class="text-gray-400 hover:text-gray-500">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <h3 class="text-center text-lg font-medium text-gray-900">
                     Edit Idea
                 </h3>
-                <p class="text-xs text-center text-gray-500 mt-4">
+                <p class="px-6 text-xs text-center text-gray-500 mt-4 leading-5">
                     You have one hour to edit your idea from the time you created it.
                 </p>
                 <form wire:submit.prevent="createIdea" method="POST" class="space-y-4 px-4 py-6 ">
@@ -55,7 +62,7 @@
                         <textarea wire:model.defer="description" name="idea" id="idea" cols="30" rows="4"
                             class="w-full bg-gray-100 rounded-lg placeholder-gray-900 text-sm px-4 py-2 border-none"
                             placeholder="Describe Your idea">
-                        </textarea>
+                                        </textarea>
                         @error('description')
                         <p class="text-red text-xs mt-1"> {{ $message }}</p>
                         @enderror
@@ -81,10 +88,10 @@
                     <div>
                         @if(session()->has('success_message'))
                         <div x-data="{ isVisable : true}" x-init="
-                                    setTimeout(()=>{
-                                        isVisable=false
-                                    },5000)
-                                " x-show.transition.duration.1000ms="isVisable" class="text-green mt-3">
+                                                    setTimeout(()=>{
+                                                        isVisable=false
+                                                    },5000)
+                                                " x-show.transition.duration.1000ms="isVisable" class="text-green mt-3">
                             {{ session('success_message') }}
                         </div>
                         @endif
@@ -94,4 +101,3 @@
         </div><!-- end modal-->
     </div>
 </div>
-<!-- End Modal-->

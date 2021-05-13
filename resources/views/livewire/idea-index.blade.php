@@ -68,24 +68,7 @@
                 <div class="flex items-center space-x-2 mt-4 md:mt-6 " x-data="{isOpen:false}"
                     @click.away="isOpen=false" x-cloak @keydown.escape.window="isOpen=false">
                     <div class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
-                    <button
-                        class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in border px-3  py-2"
-                        @click="isOpen=!isOpen">
-                        <svg fill="currentColor" width="24" height="6">
-                            <path
-                                d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z"
-                                style="color: rgba(163, 163, 163, .5)">
-                        </svg>
-                        <ul class="ml-8 w-44 absolute font-semibold bg-white shadow-card rounded-xl py-3 text-left md:ml-8 top-8 right-0 md:left-0"
-                            x-show="isOpen">
-                            <li><a href="#"
-                                    class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">Mark
-                                    as Done</a></li>
-                            <li><a href="#"
-                                    class="hover:bg-gray-100 text-gray-700 block px-5 py-2 transition duration-150 ease-in ">Delete
-                                    Post</a></li>
-                        </ul>
-                    </button>
+                    
                 </div>
                 <div class="flex items-center mt-4 md:hidden md:mt-0">
                     <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
