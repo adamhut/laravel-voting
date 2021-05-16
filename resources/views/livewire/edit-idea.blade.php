@@ -4,6 +4,7 @@
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
     @custom-show-edit-modal.window=" isOpen= true"
+   
     class="fixed z-10 inset-0 overflow-y-auto" 
     aria-labelledby="modal-title"
     role="dialog" 
@@ -39,7 +40,18 @@
             To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         -->
         <div
-            x-show.transition.origin.bottom.duration.300ms="isOpen"
+            {{-- x-show.transition.origin.bottom.duration.300ms="isOpen" --}}
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-1000"
+            {{-- x-transition:enter-start="opacity-0 transform scale-90"
+            x-transition:enter-end="opacity-100 transform scale-100" --}}
+            x-transition:enter-start="opacity-50 translate-y-4 sm:translate-y-64 sm:scale-95"
+            x-transition:enter-start="opacity-100 translate-y-0 sm:scale-100"
+            
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+            x-transition:leave-end="opacity-0 translate-y-64 sm:translate-y-0 sm:scale-95"
+            @click.away="isOpen = false"
             class="modal  bg-white rounded-tl-xl rounded-tr-xl  overflow-hidden transform transition-all py-4 sm:max-w-lg sm:w-full"
         >
             <div class="absolute top-0 right-0 pt-4 pr-4">
