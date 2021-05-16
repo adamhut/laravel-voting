@@ -49,7 +49,12 @@
                             <ul class="ml-8 w-44 absolute font-semibold bg-white shadow-card rounded-xl py-3 text-left md:ml-8 top-8 right-0 md:left-0 z-10"
                                 x-show.transition.orgin.top.left.duration.500ms="isOpen">
                                 <li>
-                                    <a href="#"
+                                    <a 
+                                        href="#"
+                                        @click="
+                                            isOpen = false;
+                                            $dispatch('custom-show-edit-modal')
+                                        "
                                         class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
                                         Edit Idea
                                     </a>
