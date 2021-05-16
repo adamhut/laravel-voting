@@ -4,9 +4,6 @@
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
     @custom-show-edit-modal.window=" isOpen= true"
-    
-    
-
     class="fixed z-10 inset-0 overflow-y-auto" 
     aria-labelledby="modal-title"
     role="dialog" 

@@ -12,10 +12,14 @@
 
     </div>
 
-    <livewire:idea-show :idea="$idea" :votesCount="$votesCount" />
+    <livewire:idea-show 
+        :idea="$idea" 
+        :votesCount="$votesCount" 
+    />
 
-    <livewire:edit-idea :idea="$idea" />
-    </livewire:edit-idea>
+    <livewire:edit-idea 
+        :idea="$idea" 
+    />
 
 
     <div class="comments-container relative space-y-6 pt-4 mt-1 md:ml-22">
