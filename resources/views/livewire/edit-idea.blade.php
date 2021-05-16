@@ -42,7 +42,7 @@
         <div
             {{-- x-show.transition.origin.bottom.duration.300ms="isOpen" --}}
             x-show="isOpen"
-            x-transition:enter="transition ease-out duration-1000"
+            x-transition:enter="transition ease-out origin-bottom duration-1000"
             {{-- x-transition:enter-start="opacity-0 transform scale-90"
             x-transition:enter-end="opacity-100 transform scale-100" --}}
             x-transition:enter-start="opacity-50 translate-y-4 sm:translate-y-64 sm:scale-95"
