@@ -17,14 +17,14 @@ class CreateIdea extends Component
 
     public $rules = [
         'title'=>'required|min:4',
-        'category' => 'required|integer',
+        'category' => 'required|integer|exists:categories,id',
         'description' => 'required|min:4',
     ];
 
 
     public function createIdea()
     {
-        if(!auth()->check())
+        if(!auth()->check() )
         {
             abort(Response::HTTP_FORBIDDEN);
         }

@@ -48,6 +48,7 @@
                             </button>
                             <ul class="ml-8 w-44 absolute font-semibold bg-white shadow-card rounded-xl py-3 text-left md:ml-8 top-8 right-0 md:left-0 z-10"
                                 x-show.transition.orgin.top.left.duration.500ms="isOpen">
+                                @can('update',$idea)
                                 <li>
                                     <a 
                                         href="#"
@@ -59,6 +60,7 @@
                                         Edit Idea
                                     </a>
                                 </li>
+                                @endcan
                                 <li>
                                     <a href="#"
                                         class="hover:bg-gray-100 text-gray-700 block px-5 py-2 transition duration-150 ease-in ">
