@@ -165,7 +165,6 @@ class EditIdeaTest extends TestCase
     /** @test */
     public function editing_an_idea_does_not_show_on_menu_when_user_does_not_have_authorizaion()
     {
-
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
 

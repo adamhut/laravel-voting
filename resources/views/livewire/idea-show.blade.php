@@ -69,7 +69,7 @@
                                             $dispatch('custom-show-delete-modal')
                                         "
                                         class="hover:bg-gray-100 text-gray-700 block px-5 py-2 transition duration-150 ease-in ">
-                                        Delete Post
+                                        Delete Idea
                                     </a>
                                 </li>
                                 @endcan
