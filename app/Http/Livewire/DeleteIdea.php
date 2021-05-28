@@ -25,7 +25,6 @@ class DeleteIdea extends Component
         }
 
 
-
         Vote::where('idea_id', $this->idea->id)->delete();
 
         Idea::destroy($this->idea->id);

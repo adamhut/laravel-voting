@@ -16,6 +16,13 @@
 
                 </h4>
                 <div class="text-gray-700 mt-3 text-xs line-clamp-3 px-2 md:px-0">
+                    @admin
+                        @if($idea->spam_reports > 0)
+                            <div class="text-red mb-2">
+                                Spam Report:{{$idea->spam_reports}}
+                            </div>
+                        @endif
+                    @endadmin    
                     {{ $idea->description }}
                 </div>
                 <div class="mt-4 flex flex-col md:flex-row md:items-center justify-between">
@@ -34,6 +41,7 @@
                         <div
                             class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-3">
                             {{ $idea->status->name }}</div>
+                        @auth
                         <div class="relative">
 
                             <button
@@ -63,7 +71,7 @@
                                 @endcan
                                 @can('delete',$idea)
                                 <li>
-                                    <a href="#"
+                                    <a  href="#"
                                         @click.prevent="
                                             isOpen = false;
                                             $dispatch('custom-show-delete-modal')
@@ -73,14 +81,33 @@
                                     </a>
                                 </li>
                                 @endcan
-                                <li>
-                                    <a href="#"
-                                        class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
-                                        Mark as Spam
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="#"
+                                            @click.prevent="
+                                                isOpen = false;
+                                                $dispatch('custom-show-mark-as-spam-modal')
+                                            "
+                                            class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
+                                            Mark as Spam
+                                        </a>
+                                    </li>
+                                @admin
+                                    @if($idea->sapm_reports>0)
+                                        <li>
+                                            <a href="#"
+                                                @click.prevent="
+                                                    isOpen = false;
+                                                    $dispatch('custom-show-mark-as-not-spam-modal')
+                                                "
+                                                class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
+                                                Not Spam
+                                            </a>
+                                        </li>
+                                    @endif
+                               @endadmin
                             </ul>
-                        </div>
+                        </div> 
+                        @endauth
                     </div>
                     <div class="flex items-center mt-4 md:hidden md:mt-0">
                         <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
@@ -143,9 +170,9 @@
                     </form>
                 </div>
             </div>
-            @if(auth()->check() && auth()->user()->isAdmin())
+            @admin
             <livewire:set-status :idea="$idea"></livewire:set-status>
-            @endif
+            @endadmin
         </div>
         <div class="hidden md:flex items-center space-x-3 ">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2 shadow-sm">

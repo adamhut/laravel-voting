@@ -55,6 +55,13 @@
                 <a href="{{ route('idea.show',$idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
             </h4>
             <div class="text-gray-700 mt-3 text-xs line-clamp-3 px-2 md:px-0">
+                @admin
+                    @if($idea->spam_reports > 0)
+                        <div class="text-red mb-2">
+                            Spam Report:{{$idea->spam_reports}}
+                        </div>
+                    @endif
+                @endadmin
                 {{ $idea->description }}
             </div>
             <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">

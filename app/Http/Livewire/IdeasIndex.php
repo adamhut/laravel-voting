@@ -90,6 +90,9 @@ class IdeasIndex extends Component
             ->when($this->filter && auth()->check() && $this->filter === 'My Ideas',  function ($query) {
                 return $query->where('user_id',auth()->user()->id);
             })
+            ->when($this->filter && auth()->check() && $this->filter === 'Spam Idea',  function ($query) {
+                return $query->where('spam_reports','>',0)->orderBy('spam_reports','desc');
+            })
             ->when($this->search  && strlen($this->search) >=  '3',  function ($query) {
                 return $query->where('title','like','%'.$this->search.'%');
             })               

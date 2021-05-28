@@ -22,6 +22,12 @@
     @can('delete',$idea)
         <livewire:delete-idea :idea="$idea" />
     @endcan
+    
+    <livewire:mark-idea-as-spam :idea="$idea" />
+
+    @admin
+    <livewire:mark-idea-as-not-spam :idea="$idea" />
+    @endadmin
 
     <div class="comments-container relative space-y-6 pt-4 mt-1 md:ml-22">
         <div class="is-admin comment-container relative  mt-4 bg-white rounded-xl flex">
