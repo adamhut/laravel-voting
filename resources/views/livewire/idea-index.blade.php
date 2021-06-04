@@ -58,7 +58,7 @@
                 @admin
                     @if($idea->spam_reports > 0)
                         <div class="text-red mb-2">
-                            Spam Report:{{$idea->spam_reports}}
+                            Spam Reports:{{$idea->spam_reports}}
                         </div>
                     @endif
                 @endadmin

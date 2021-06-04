@@ -31,6 +31,7 @@ class IdeaFactory extends Factory
             'status_id'     => Status::factory(),
             'title'         => ucwords($this->faker->words(4,true)),
             'description'   => $this->faker->paragraphs(5,true),
+            // 'spam_reports'  =>0,
         ];
     }
 
