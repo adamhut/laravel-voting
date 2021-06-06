@@ -1,10 +1,10 @@
 @props([
-    'event-to-open-modal',
-    'event-to-close-modal',
-    'modal-title',
-    'modal-description',
-    'modal-confirm-button-text',
-    'wire-click'
+    'eventToOpenModal',
+    'eventToCloseModal',
+    'modaTitle',
+    'modalDescription',
+    'modalConfirmButtonText',
+    'wireClick'
 ])
 
 
