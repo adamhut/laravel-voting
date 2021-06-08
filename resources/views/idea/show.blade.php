@@ -17,6 +17,9 @@
         :votesCount="$votesCount" 
     />
     
+    <x-notification-success></x-notification-success>
+
+
     <x-modal-container :idea="$idea"></x-modal-container>
 
     <div class="comments-container relative space-y-6 pt-4 mt-1 md:ml-22">
