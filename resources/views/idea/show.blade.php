@@ -17,7 +17,7 @@
         :votesCount="$votesCount" 
     />
     
-    <x-notification-success></x-notification-success>
+    <x-notification-success ></x-notification-success>
 
 
     <x-modal-container :idea="$idea"></x-modal-container>

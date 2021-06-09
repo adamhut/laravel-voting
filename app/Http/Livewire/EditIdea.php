@@ -50,7 +50,7 @@ class EditIdea extends Component
         // session()->flash('success_message', 'Idea was updated successfully');
 
         // $this->reset();
-        $this->emit('ideaWasUpdated');
+        $this->emit('ideaWasUpdated','Idea was updated successfully!');
         return;
         // return redirect()->route('idea.index');    
     }

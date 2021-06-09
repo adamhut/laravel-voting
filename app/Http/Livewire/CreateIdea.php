@@ -45,7 +45,7 @@ class CreateIdea extends Component
         //     'user_id' => auth()->user()->id,
         // ]);
 
-        session()->flash('success_message', 'Idea was added successfully');
+        session()->flash('success_message', 'Idea was added successfully!');
 
         $this->reset();
 

@@ -47,9 +47,11 @@
                 @endif
                 <div>
                     <a href="#">
-                        <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" 
+                        <img 
+                            src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" 
                             alt="avatar"
-                            class="w-10 h-10 rounded-full">
+                            class="w-10 h-10 rounded-full"
+                        >
                     </a>
                 </div>
             </div>
@@ -103,6 +105,15 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ad vel deserunt expedita eveniet similique eum cum voluptates, exercitationem recusandae, maxime perferendis. Minus tempore neque voluptate nobis ullam fuga rerum.
             </div> --}}
         </main>
+
+        <!--Start Notification-->
+        @if(session()->has('success_message'))
+            <x-notification-success 
+                :redirect="true"
+                message-to-display="{{ (session('success_message')) }}"
+            ></x-notification-success>
+        @endif 
+        <!--End Notification -->
         <livewire:scripts />
     </body>
 </html>

@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div>
+    {{-- <div>
         @if(session()->has('success_message'))
             <div 
                 x-data="{ isVisable : true}"   
@@ -71,5 +71,5 @@
                 {{ session('success_message') }}
             </div>
         @endif
-    </div>
+    </div> --}}
 </form>
