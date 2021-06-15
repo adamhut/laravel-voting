@@ -74,6 +74,7 @@ class IdeasIndex extends Component
         // dd($statuses);
         $ideas = Idea::with('category', 'user', 'status')
             ->withCount('votes')
+            ->withCount('comments')
             ->withVotedByUser(auth()->user())
             // ->when(request()->has('status') && request()->status !=='All',function($query) use($statuses){
             //     return $query->where('status_id', $statuses->get(request()->status));

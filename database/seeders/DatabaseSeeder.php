@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
 
         //generate unique votes, ensure idea_id and user_id are uqique foreach row
         $this->call(VoteSeeder::class);
+        $this->call(CommentSeeder::class);
     }
 }
