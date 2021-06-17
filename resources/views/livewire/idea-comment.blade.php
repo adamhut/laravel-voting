@@ -1,4 +1,4 @@
-<div class="comment-container relative  mt-4 bg-white rounded-xl flex is-admin">
+ <div class="comment-container relative  mt-4 bg-white rounded-xl flex is-admin">
     <div class="flex-1 flex flex-col md:flex-row px-4 py-6">
         <div class="flex-none  md:block ">
             <a href="#">
@@ -12,14 +12,19 @@
                 <a href="#" class="hover:underline">
                     Status Changed to "Under Considerration"
                 </a>
-            </h4> --}}
-            <div class="text-gray-600  text-xs line-clamp-3 ">
+            </h4> line-clamp-3 --}}
+            <div class="text-gray-600  text-xs ">
                {{ $comment->body }}
             </div>
             <div class="flex items-center justify-between mt-4 md:mt-0">
                 <div class="flex items-center text-xxs font-semibold space-x-2 text-gray-400">
+                    
                     <span class="font-bold text-blue">{{ $comment->user->name }}</span>
                     <span>&bull;</span>
+                    @if(auth()->user()->id == $ideaUserId)
+                        <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
+                        <span>&bull;</span>
+                    @endif
                     <span>{{ $comment->created_at->diffForHumans() }} </span>
                 </div>
                 <div class="flex items-center space-x-2 md:mt-6" x-data="{isOpen:false}" @click.away="isOpen=false"

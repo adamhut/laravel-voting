@@ -5,7 +5,11 @@
         <div class="comments-container relative space-y-6 pt-4 mt-1 md:ml-22">
         
             @foreach($comments as $comment)
-            <livewire:idea-comment :comment="$comment" :key="$comment->id"></livewire:idea-comment>
+                <livewire:idea-comment 
+                    :comment="$comment" 
+                    :key="$comment->id"
+                    :ideaUserId="$idea->user->id"  
+                ></livewire:idea-comment>
         
             @endforeach
         

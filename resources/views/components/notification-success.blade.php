@@ -23,15 +23,19 @@
          $nextTick( ()=> showNotification(messageToDisplay) )
         @else
             Livewire.on('idexWasUpdated',message => {
-            showNotification(message);
+                showNotification(message);
             });
             
             Livewire.on('ideaWasMarkedAsSpam',message => {
-            showNotification(message);
+                showNotification(message);
             });
             
             Livewire.on('ideaWasMarkedAsNotSpam',message => {
-            showNotification(message);
+                showNotification(message);
+            });
+
+            Livewire.on('commentWasAdded',message => {
+                showNotification(message);
             });
 
         @endif
