@@ -13,7 +13,7 @@ class AddComment extends Component
     public $comment;
 
     protected $rules = [
-        'comment' => 'requiredd|min:4'
+        'comment' => 'required|min:4'
     ];
 
     public function mount(Idea $idea)

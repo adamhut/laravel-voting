@@ -5,12 +5,35 @@
     @click.away="isOpen=false" 
     @keydown.escape.window="isOpen=false"
     x-init="
-        Livewire.on('commentWasAdded',()=>{
+        Livewire.on('commentWasAdded',()=>{            
             isOpen = false;
         });
+
+        Livewire.hook('message.processed',(message,component) =>{
+           
+            if(message.updateQueue[0].payload.event ==='commentWasAdded' 
+                && message.component.fingerprint.name=='idea-comments')
+            {
+                {{-- console.log(message); --}}
+                const lastComment = document.querySelector('.comment-container:last-child')
+                lastComment.scrollIntoView({ behavior:'smooth' })
+                lastComment.classList.add('bg-green-50');
+                 
+                setTimeout(()=>{
+                    lastComment.classList.remove('bg-green-50');
+                },5000);
+
+            }
+        })
     "
 >
-    <button type="button" @click="isOpen = !isOpen"
+    <button type="button" 
+        @click=" isOpen = !isOpen 
+            {{-- if(isOpen)  
+            {
+                $nextTick( ()=>{ $refs.comment.focus() } )
+            } --}}
+        "
         class="flex items-center justify-center w-36 h-11 text-sm bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white ">
         <span class="">Reply</span>
     </button>
@@ -20,8 +43,9 @@
         @auth
             <form wire:submit.prevent="addComment" action="#" class="space-y-4 px-4 py-6">
                 <div>
-                    <textarea 
-                        wire:model="comment"
+                    <textarea
+                        x-ref="comment"
+                        wire:model.defer="comment"
                         name="post_comment" 
                         id="post_comment" 
                         cols="30" 

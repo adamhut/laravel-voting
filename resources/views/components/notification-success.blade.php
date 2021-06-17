@@ -1,9 +1,7 @@
 @props([
     'redirect'=>false,
     'messageToDisplay'=>'',
-
 ])
-
 
 <div 
     x-cloak 
@@ -11,7 +9,7 @@
         isOpen:false,
         messageToDisplay:'{{ $messageToDisplay }}',
         showNotification(message){
-            isOpen = true;
+            this.isOpen = true;
             this.messageToDisplay = message
             setTimeout(()=>{
                 this.isOpen=false
@@ -20,8 +18,10 @@
     }"
     x-init="
         @if ($redirect)
-         $nextTick( ()=> showNotification(messageToDisplay) )
+        
+            $nextTick( ()=> showNotification(messageToDisplay) )
         @else
+           
             Livewire.on('idexWasUpdated',message => {
                 showNotification(message);
             });

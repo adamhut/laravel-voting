@@ -4,7 +4,7 @@
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
     @custom-show-edit-modal.window=" 
-        isOpen= true
+        isOpen = true
          $nextTick(()=>{$refs.titleInput.focus();})
     "
     x-init="

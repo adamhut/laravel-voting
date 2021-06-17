@@ -1,5 +1,5 @@
- <div class="comment-container relative  mt-4 bg-white rounded-xl flex is-admin">
-    <div class="flex-1 flex flex-col md:flex-row px-4 py-6">
+ <div class="comment-container relative  mt-4 bg-white rounded-xl flex  transition duration-500 ease-in">
+    <div class="flex-1 flex flex-col md:flex-row px-4 py-6">{{-- is-admin --}}
         <div class="flex-none  md:block ">
             <a href="#">
                 <img src="{{ $comment->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
@@ -21,7 +21,7 @@
                     
                     <span class="font-bold text-blue">{{ $comment->user->name }}</span>
                     <span>&bull;</span>
-                    @if(auth()->user()->id == $ideaUserId)
+                    @if(auth()->check() && auth()->user()->id == $ideaUserId)
                         <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
                         <span>&bull;</span>
                     @endif
