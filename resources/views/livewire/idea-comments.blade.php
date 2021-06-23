@@ -1,5 +1,4 @@
 <div>
-
     @if($comments->isNotEmpty())
 
         <div class="comments-container relative space-y-6 pt-4 mt-1 md:ml-22">
@@ -13,7 +12,7 @@
         
             @endforeach
         
-        
+           
         
             {{-- <div class="comment-container relative  mt-4 bg-white rounded-xl flex is-admin">
                     <div class="flex-1 flex flex-col md:flex-row px-4 py-6">
@@ -129,11 +128,14 @@
         
         
             <!--end comment-container-->
-             <x-comment-container></x-comment-container>
-            {{--    <x-comment-container></x-comment-container> --}}
+             {{-- <x-comment-container></x-comment-container> --}}
+            {{-- <x-comment-container></x-comment-container> --}}
         
         </div><!-- end comments-contianer-->
-    
+
+        <div class="md:ml-22 my-8">
+            {{ $comments->onEachSide(1)->links() }}
+        </div>
         
     @else
         <div class="mx-auto w-70 mt-12 ">

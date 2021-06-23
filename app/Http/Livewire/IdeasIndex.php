@@ -98,7 +98,8 @@ class IdeasIndex extends Component
                 return $query->where('title','like','%'.$this->search.'%');
             })               
             ->orderBy('id', 'desc')
-            ->simplePaginate(Idea::PAGINATION_COUNT);
+            ->simplePaginate()
+            ->withQueeryString();
         return view('livewire.ideas-index',[
             'ideas'=>$ideas,
             'categories'=> $categories,

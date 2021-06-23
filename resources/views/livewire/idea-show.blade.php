@@ -33,7 +33,7 @@
                         <span>&bull;</span>
                         <span>{{ $idea->category->name }}</span>
                         <span>&bull;</span>
-                        <span class="text-gray-900">{{  $idea->comments->count() }} Comments</span>
+                        <span class="text-gray-900">{{  $idea->comments()->count() }} Comments</span>
                     </div>
 
                     <div x-data="{isOpen:false}" @click.away="isOpen=false" x-cloak

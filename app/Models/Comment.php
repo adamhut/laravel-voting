@@ -10,7 +10,9 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $guarded=[];
+    protected $guarded = [];
+
+    protected $perPage = 3;
 
     public function user()
     {
