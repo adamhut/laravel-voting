@@ -99,7 +99,7 @@ class IdeasIndex extends Component
             })               
             ->orderBy('id', 'desc')
             ->simplePaginate()
-            ->withQueeryString();
+            ->withQueryString();
         return view('livewire.ideas-index',[
             'ideas'=>$ideas,
             'categories'=> $categories,
