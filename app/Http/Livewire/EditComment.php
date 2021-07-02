@@ -39,8 +39,8 @@ class EditComment extends Component
 
         $this->validate();
 
-        $this->commnet->update([
-            'body' => $this->comment->body,
+        $this->comment->update([
+            'body' =>$this->body,// $this->comment->body,
         ]);
         $this->emit('commentWasUpdated');
         

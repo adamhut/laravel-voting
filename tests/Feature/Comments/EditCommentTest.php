@@ -1,0 +1,198 @@
+<?php
+
+namespace Tests\Feature\Comments;
+
+use Carbon\Carbon;
+use Tests\TestCase;
+use App\Models\Idea;
+use App\Models\User;
+use Livewire\Livewire;
+use App\Models\Comment;
+use App\Models\Category;
+use Illuminate\Http\Response;
+use App\Http\Livewire\EditIdea;
+use App\Http\Livewire\IdeaShow;
+use App\Http\Livewire\EditComment;
+use App\Http\Livewire\IdeaComment;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class EditCommentTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function shows_edit_comment_livewire_component_when_user_has_authorization()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();        
+
+        $this->actingAs($user)
+            ->get(route('idea.show',$idea))
+            ->assertSeeLivewire('edit-comment');  
+    }
+
+    /** @test */
+    public function does_not_shows_edit_comment_livewire_component_when_user_does_not_have_authorization()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();
+
+        $this->get(route('idea.show', $idea))
+            ->assertDontSeeLivewire('edit-comment');
+    }
+
+    
+    /** @test */
+    public function edit_comment_is_set_correctly_when_user_click_it_from_menu()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();
+
+        $comment = Comment::factory()->create([
+            'idea_id'=>$idea->id,
+            'user_id' => $user->id,
+            'body' => 'This is my first comment',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(EditComment::class)
+            ->call('setEditComment',$comment->id)
+            ->assertSet('body',$comment->body)
+            ->assertEmitted('editCommentWasSet');
+
+
+    }
+
+
+    /** @test */
+    public function edit_comment_form_validation_works()
+    {
+
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create();
+
+        $comment = Comment::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+            'body' => 'This is my first comment',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(EditComment::class)
+            ->call('setEditComment', $comment->id)
+            ->set('body', '')
+            ->call('updateComment')
+            ->assertHasErrors(['body'])
+            ->set('body', '11')
+            ->call('updateComment')
+            ->assertHasErrors(['body']);     
+    }
+
+    /** @test */
+    public function editing_an_comment_works_when_user_has_authorization()
+    {
+
+        $user = User::factory()->create();
+
+        $idea = Idea::factory()->create([
+            "user_id" => $user->id
+        ]);
+        $comment = Comment::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+            'body' => 'This is my first comment',
+        ]);
+        $updatedBody  = 'this is updated comment';
+
+        Livewire::actingAs($user)
+            ->test(EditComment::class)
+            ->call('setEditComment', $comment->id)
+            ->assertSet('body', $comment->body)
+            ->set('body',$updatedBody)
+            ->call('updateComment')
+            ->assertEmitted('commentWasUpdated');
+
+        $this->assertEquals($updatedBody, $comment->fresh()->body);
+    }
+
+    /** @test */
+    public function editing_an_comment_does_not_work_when_user_does_not_have_authorization_because_different_user_created_the_comment()
+    {
+        $user = User::factory()->create();
+        $userB = User::factory()->create();
+
+        $idea = Idea::factory()->create([
+            "user_id" => $user->id,
+        ]);
+
+        $comment = Comment::factory()->create([
+            'idea_id' => $idea->id,
+            'body' => 'This is my first comment',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(EditComment::class)
+            ->call('setEditComment', $comment->id)
+            ->call('updateComment')
+            ->assertStatus(Response::HTTP_FORBIDDEN);
+
+        Livewire::test(EditComment::class)
+            ->call('setEditComment', $comment->id)
+            ->call('updateComment')
+            ->assertStatus(Response::HTTP_FORBIDDEN);
+
+       
+    }
+
+  
+    /** @test */
+    public function editing_an_comment_shows_on_menu_when_user_does_not_have_authorizaion()
+    {
+
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create([
+            "user_id" => $user->id,
+        ]);
+
+        $comment = Comment::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+            'body' => 'This is my first comment',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(IdeaComment::class,[
+                'comment' =>$comment,
+                'ideaUserId'=>$idea->user_id
+            ])
+            ->assertSee('Edit Comment');
+
+    }
+
+    /** @test */
+    public function editing_an_comment_does_not_show_on_menu_when_user_does_not_have_authorizaion()
+    {
+        $user = User::factory()->create();
+        $idea = Idea::factory()->create([
+            "user_id" => $user->id,
+        ]);
+
+        $comment = Comment::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+            'body' => 'This is my first comment',
+        ]);
+
+        Livewire::test(IdeaComment::class, [
+                'comment' => $comment,
+                'ideaUserId' => $idea->user_id
+            ])
+            ->assertDontSee('Edit Comment');
+    }
+
+    
+
+
+
+}
