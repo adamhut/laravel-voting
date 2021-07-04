@@ -13,7 +13,14 @@
                     Status Changed to "Under Considerration"
                 </a>
             </h4> line-clamp-3 --}}
-            <div class="text-gray-600  text-xs ">
+            <div class="text-gray-600  text-xs">
+                @admin
+                @if($comment->spam_reports > 0)
+                    <div class="text-red mb-2">
+                        Spam Reports:{{$comment->spam_reports}}
+                    </div>
+                @endif
+                @endadmin
                {{ $comment->body }}
             </div>
             <div class="flex items-center justify-between mt-4 md:mt-0">
@@ -62,11 +69,7 @@
                                         </a>
                                     </li>
                                 @endcan
-                                <li>
-                                    <a href="#" class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
-                                        Mark as Spam
-                                    </a>
-                                </li>
+                              
                                @can('delete',$comment)
                                <li>
                                     <a href="#" 
@@ -79,6 +82,27 @@
                                     </a>
                                 </li>
                                 @endcan
+                                <li>
+                                    <a href="#" 
+                                        @click.prevent="
+                                            Livewire.emit('setMarkAsSpamComment',{{ $comment->id }})
+                                            {{-- $dispatch('custom-show-edit-comment-modal') --}}
+                                        "
+                                        class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
+                                       Mark As Spam
+                                    </a>
+                                </li>
+                                @if($comment->spam_reports>0)
+                                    <li>
+                                        <a href="#" @click.prevent="
+                                                Livewire.emit('setMarkAsNotSpamComment',{{ $comment->id }})
+                                                {{-- $dispatch('custom-show-edit-comment-modal') --}}
+                                            "
+                                            class="hover:bg-gray-100 text-gray-700  block px-5 py-2 transition duration-150 ease-in ">
+                                            Mark As Not Spam
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

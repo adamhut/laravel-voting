@@ -46,6 +46,14 @@
                 showNotification(message);
             });
 
+            Livewire.on('commentWasMarkedAsNotSpam',message => {
+                showNotification(message);
+            });
+            Livewire.on('commentWasMarkedAsNotSpam',message => {
+                showNotification(message);
+            });
+            
+
         @endif
     " 
     x-show="isOpen" 

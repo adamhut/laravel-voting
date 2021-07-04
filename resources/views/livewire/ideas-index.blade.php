@@ -20,6 +20,7 @@
                 <option value="My Ideas">My Ideas</option> 
                 @admin
                     <option value="Spam Idea">Spam Idea</option>
+                    <option value="Spam Comments">Spam Comments</option>
                 @endadmin
             </select>
         </div>

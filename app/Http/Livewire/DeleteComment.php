@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 
 class DeleteComment extends Component
 {
-    public Comment $comment;
+    public  $comment;
 
     protected $listeners = [
         'setDeleteComment',
@@ -28,6 +28,8 @@ class DeleteComment extends Component
             abort(Response::HTTP_FORBIDDEN);
         }
         Comment::destroy($this->comment->id);
+
+        $this->comment = null;
 
         $this->emit('commentWasDeleted','Comment was deleted!');
 

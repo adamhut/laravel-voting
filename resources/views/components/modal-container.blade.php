@@ -18,3 +18,11 @@
 @auth
     <livewire:delete-comment />
 @endauth
+
+@auth
+    <livewire:mark-comment-as-spam />
+@endauth
+
+@auth
+    <livewire:mark-comment-as-not-spam />
+@endauth
