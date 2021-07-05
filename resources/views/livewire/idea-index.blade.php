@@ -70,7 +70,7 @@
                     <span>&bull;</span>
                     <span>{{ $idea->category->name }}</span>
                     <span>&bull;</span>
-                    <span class="text-gray-900">{{ $idea->comments_count }} Comments</span>
+                    <span wire:ignore class="text-gray-900">{{ $idea->comments_count }} Comments</span>
                 </div>
                 <div class="flex items-center space-x-2 " x-data="{isOpen:false}"
                     @click.away="isOpen=false" x-cloak @keydown.escape.window="isOpen=false">

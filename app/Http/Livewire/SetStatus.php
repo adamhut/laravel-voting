@@ -2,15 +2,17 @@
 
 namespace App\Http\Livewire;
 
-use App\Jobs\NotifyAllVoters;
 use App\Models\Idea;
+use App\Models\Comment;
 use Livewire\Component;
+use App\Jobs\NotifyAllVoters;
 use Illuminate\Http\Response;
 
 class SetStatus extends Component
 {
     public $idea;
     public $status;
+    public $comment;
 
     public $notifyAllVoters;
 
@@ -31,12 +33,22 @@ class SetStatus extends Component
         $this->idea->status_id = $this->status;
         $this->idea->save();
 
-        $this->emit('statusWasUpdated');
-
+        
         if($this->notifyAllVoters)
         {
             NotifyAllVoters::dispatch($this->idea);
         }
+
+        Comment::create([
+            'user_id'   => auth()->user()->id,
+            'idea_id'   => $this->idea->id,
+            'status_id' => $this->status,
+            'body'      => $this->comment ?? "No comment was added",
+            'is_status_update' => true,
+        ]);
+
+
+        $this->emit('statusWasUpdated','Status was udpated Successfully');
 
     }
 

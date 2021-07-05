@@ -60,9 +60,16 @@
                 </div>
             </div>
             <div>
-                <textarea name="update_comment" id="update_comment" cols="30" rows="4"
+                <textarea 
+                    name="update_comment" 
+                    id="update_comment" 
+                    cols="30" 
+                    rows="4"
+                    wire:model="comment"
                     class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 border-none"
-                    placeholder="Add an update comment (optional)"></textarea>
+                    placeholder="Add an update comment (optional)"
+                >
+                </textarea>
             </div>
             <div class="flex flex-col md:flex-row items-center space-x-0 md:space-x-3 space-y-2 md:space-y-0">
 

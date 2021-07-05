@@ -1,6 +1,7 @@
  <div 
-    class="comment-container relative  mt-4 bg-white rounded-xl flex  transition duration-500 ease-in {{ 'status-'.Str::kebab($comment->status->name)}} @if($comment->is_status_update)   is-status-update @endif"
+    class="comment-container relative  mt-4 bg-white rounded-xl flex  transition duration-500 ease-in  @if($comment->is_status_update)   is-status-update @endif"
 >
+{{-- {{ 'status-'.Str::kebab($comment->status->name)}} --}}
     <div class="flex-1 flex flex-col md:flex-row px-4 py-6">{{-- is-admin --}}
         <div class="flex-none  md:block ">
             <a href="#">
@@ -51,7 +52,7 @@
                         x-cloak 
                         x-data="{isOpen:false}" 
                         @click.away="isOpen=false"  
-                        class="flex items-center space-x-2 md:mt-6" 
+                        class="flex items-center space-x-2 md:mt-6 bg-gray-900" 
                         @keydown.escape.window="isOpen=false"
                     >
                         <div class="relative">

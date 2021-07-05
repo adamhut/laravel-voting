@@ -30,7 +30,7 @@ class AdminSetStatusTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'category1']);
         $categoryTwo = Category::factory()->create(['name' => 'category2']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusOpen = Status::factory()->create(['name' => 'Open', ]);
         // $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-purple text-white ']);
 
         $idea = Idea::factory()->create([
@@ -59,7 +59,7 @@ class AdminSetStatusTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'category1']);
         $categoryTwo = Category::factory()->create(['name' => 'category2']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusOpen = Status::factory()->create(['name' => 'Open', ]);
         // $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-purple text-white ']);
 
         $idea = Idea::factory()->create([
@@ -83,7 +83,7 @@ class AdminSetStatusTest extends TestCase
         ]);
 
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusConsirering = Status::factory()->create(['name' => 'Considering', 'classes' => ' bg-gray-200 ']);
+        $statusConsirering = Status::factory()->create(['name' => 'Considering', ]);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -108,8 +108,8 @@ class AdminSetStatusTest extends TestCase
         ]);
 
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusConsirering = Status::factory()->create(['id'=>2,'name' => 'Considering', 'classes' => ' bg-gray-200 ']);
-        $statusInProgress  = Status::factory()->create(['id'=>3,'name' => 'In Progress', 'classes' => ' bg-gray-200 ']);
+        $statusConsirering = Status::factory()->create(['id'=>2,'name' => 'Considering', ]);
+        $statusInProgress  = Status::factory()->create(['id'=>3,'name' => 'In Progress', ]);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -141,8 +141,8 @@ class AdminSetStatusTest extends TestCase
         ]);
 
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusConsirering = Status::factory()->create(['id' => 2, 'name' => 'Considering', 'classes' => ' bg-gray-200 ']);
-        $statusInProgress  = Status::factory()->create(['id' => 3, 'name' => 'In Progress', 'classes' => ' bg-gray-200 ']);
+        $statusConsirering = Status::factory()->create(['id' => 2, 'name' => 'Considering']);
+        $statusInProgress  = Status::factory()->create(['id' => 3, 'name' => 'In Progress']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -168,5 +168,89 @@ class AdminSetStatusTest extends TestCase
         Queue::assertPushed(NotifyAllVoters::class);
 
     }
+
+    /** @test */
+    public function can_set_status_correctlly_no_comment()
+    {
+        $user   = User::factory()->create([
+            'email' => 'adamhut@gmail.com'
+        ]);
+
+        $categoryOne = Category::factory()->create(['name' => 'category1']);
+        $statusConsirering = Status::factory()->create(['id' => 2, 'name' => 'Considering' ]);
+        $statusInProgress  = Status::factory()->create(['id' => 3, 'name' => 'In Progress']);
+
+        $idea = Idea::factory()->create([
+            'user_id' => $user->id,
+            'title' => 'My first idea',
+            'category_id'   => $categoryOne->id,
+            'status_id'     =>  $statusConsirering->id,
+            'description' => 'Description of my first idea',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(SetStatus::class, [
+                'idea' => $idea,
+            ])
+            ->set('status', $statusInProgress->id)
+            ->call('setStatus')
+            ->assertEmitted('statusWasUpdated');
+
+        $this->assertDatabaseHas('ideas', [
+            'id' => $idea->id,
+            'status_id' => $statusInProgress->id,
+            
+        ]);
+
+        $this->assertDatabaseHas('comments', [
+            'idea_id' => $idea->id,
+            'status_id' => $statusInProgress->id,
+            'body' => 'No comment was added',
+            'is_status_update' => 1,
+        ]);
+    }
+
+    /** @test */
+    public function can_set_status_correctlly_with_comment()
+    {
+        $user   = User::factory()->create([
+            'email' => 'adamhut@gmail.com'
+        ]);
+
+        $categoryOne = Category::factory()->create(['name' => 'category1']);
+        $statusConsirering = Status::factory()->create(['id' => 2, 'name' => 'Considering']);
+        $statusInProgress  = Status::factory()->create(['id' => 3, 'name' => 'In Progress']);
+
+        $idea = Idea::factory()->create([
+            'user_id' => $user->id,
+            'title' => 'My first idea',
+            'category_id'   => $categoryOne->id,
+            'status_id'     =>  $statusConsirering->id,
+            'description' => 'Description of my first idea',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(SetStatus::class, [
+                'idea' => $idea,
+            ])
+            ->set('status', $statusInProgress->id)
+            ->set('comment', 'This is a comment')
+            ->call('setStatus')
+            ->assertEmitted('statusWasUpdated');
+
+        $this->assertDatabaseHas('ideas', [
+            'id' => $idea->id,
+            'status_id' => $statusInProgress->id,
+
+        ]);
+
+        $this->assertDatabaseHas('comments', [
+            'idea_id' => $idea->id,
+            'status_id' => $statusInProgress->id,
+            'body' => 'This is a comment',
+            'is_status_update' => 1,
+        ]);
+    }
+
 
 }

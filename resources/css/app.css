@@ -13,16 +13,16 @@
     position: absolute;
     display: block;
     top: 0;
-    left: -40px;
+    left: -37px;
     content: "";
     width: 3px;
     height: 100%;
-    background: #78909c;
+    background: #edf0f5;
     /* opacity: .07; */
 } 
 
 .is-status-update.comment-container:last-child::after {
-    left: -41px;
+    left: -38px;
 }
 
 .comment-container::before{
@@ -30,10 +30,10 @@
     display: block;
     top: 57px;
     content: "";
+    left: -37px;
     width: 22px;
     height: 3px;
-    background: #78909c;
-    left: -40px;
+    background: #edf0f5;
     /* opacity: .07; */
 } 
 
@@ -41,7 +41,7 @@
     position: absolute;
     display: block;
     top: 60px;
-    left: -38px;
+    left: -37px;
     content: "";
     width: 3px;
     height: calc(100% - 60px);

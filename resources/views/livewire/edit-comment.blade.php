@@ -71,7 +71,7 @@
                         <textarea 
                             wire:model.defer="body" 
                             name="comment" 
-                            id="comment" 
+                            id="edit-comment" 
                             cols="30" 
                             rows="4"
                             x-ref="commentInput"
