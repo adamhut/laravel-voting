@@ -22,7 +22,7 @@ class StatusFilterTest extends TestCase
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -43,7 +43,7 @@ class StatusFilterTest extends TestCase
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => ' bg-gray-200 ']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -62,7 +62,7 @@ class StatusFilterTest extends TestCase
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusImplemented = Status::factory()->create(['id'=>4,'name' => 'Implemented', 'classes' => ' bg-gray-200 ']);
+        $statusImplemented = Status::factory()->create(['id'=>4,'name' => 'Implemented']);
 
         Idea::factory()->create([
             'user_id' => $user->id,
@@ -92,13 +92,13 @@ class StatusFilterTest extends TestCase
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'category1']);
         
-        $statusImplemented = Status::factory()->create(['id' => 4, 'name' => 'Implemented', 'classes' => ' bg-gray-200 ']);
+        $statusImplemented = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
 
-        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
-        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
-        $statusInProgress = Status::factory()->create(['name' => 'In Progress', 'classes' => 'bg-yellow text-white']);
-        $statusImplemented = Status::factory()->create(['name' => 'Implemented', 'classes' => 'bg-gray-200']);
-        $statusClosed = Status::factory()->create(['name' => 'Closed', 'classes' => 'bg-gray-200']);
+        $statusOpen = Status::factory()->create(['name' => 'Open']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering']);
+        $statusInProgress = Status::factory()->create(['name' => 'In Progress']);
+        $statusImplemented = Status::factory()->create(['name' => 'Implemented']);
+        $statusClosed = Status::factory()->create(['name' => 'Closed']);
 
         Idea::factory()->create([
             'user_id' => $user->id,
@@ -157,7 +157,7 @@ class StatusFilterTest extends TestCase
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusImplemented = Status::factory()->create(['id' => 4, 'name' => 'Implemented', 'classes' => ' bg-gray-200 ']);
+        $statusImplemented = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -189,7 +189,7 @@ class StatusFilterTest extends TestCase
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'category1']);
-        $statusImplemented = Status::factory()->create(['id' => 4, 'name' => 'Implemented', 'classes' => ' bg-gray-200 ']);
+        $statusImplemented = Status::factory()->create(['id' => 4, 'name' => 'Implemented']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,

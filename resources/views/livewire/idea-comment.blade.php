@@ -1,10 +1,15 @@
- <div class="comment-container relative  mt-4 bg-white rounded-xl flex  transition duration-500 ease-in">
+ <div 
+    class="comment-container relative  mt-4 bg-white rounded-xl flex  transition duration-500 ease-in {{ 'status-'.Str::kebab($comment->status->name)}} @if($comment->is_status_update)   is-status-update @endif"
+>
     <div class="flex-1 flex flex-col md:flex-row px-4 py-6">{{-- is-admin --}}
         <div class="flex-none  md:block ">
             <a href="#">
                 <img src="{{ $comment->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
             </a>
-            <div class="md:text-center text-blue uppercase text-xxs font-bold mt-2">Admin</div>
+            @if($comment->user->isAdmin())
+                <div class="md:text-center text-blue uppercase text-xxs font-bold mt-2">Admin</div>
+            @endif
+        
         </div>
 
         <div class="md:mx-4 w-full flex-1 flex flex-col ">
@@ -21,12 +26,19 @@
                     </div>
                 @endif
                 @endadmin
-               {{ $comment->body }}
+                @if($comment->is_status_update)
+                    <h4 class="text-xl font-semibold mb-3">
+                        Status Changed to "{{ $comment->status->name }}"
+                    </h4>
+                @endif
+                <div>
+                    {{ $comment->body }}
+                </div>
             </div>
             <div class="flex items-center justify-between mt-4 md:mt-0">
                 <div class="flex items-center text-xxs font-semibold space-x-2 text-gray-400">
                     
-                    <span class="font-bold text-blue">{{ $comment->user->name }}</span>
+                    <span class="font-bold @if($comment->is_status_update) text-blue @endif text-gray-800">{{ $comment->user->name }}</span>
                     <span>&bull;</span>
                     @if(auth()->check() && auth()->user()->id == $ideaUserId)
                         <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
