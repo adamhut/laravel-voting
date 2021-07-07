@@ -39,6 +39,7 @@ module.exports = {
                 70:'17.5rem',
                 76:'19rem',
                 104:'26rem',
+                128:'32rem',
                 175:'43.75rem',
             },
             fontSize:{
@@ -49,7 +50,7 @@ module.exports = {
                 dialog:'3px 4px 15px 0 rgba(36,37,38,0.22 )',
 
             }
-            
+
 
         },
     },

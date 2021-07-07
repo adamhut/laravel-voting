@@ -22,23 +22,69 @@
             <a href="/">
                 <img src="{{asset('images/logo.svg')}}" alt="Laracasts Logo" class="">
             </a>
-            <div class="mt-2 md:mt-0 flex items-center"> 
+            <div class="mt-2 md:mt-0 flex items-center">
                 @if (Route::has('login'))
-                    <div class="px-4 md:px-6 py-4 sm:block">
+                    <div class="px-4 md:px-6 py-4 sm:block ">
                         @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                            
-                                <a
-                                    class=""
-                                    href="{{route('logout')}}" 
+                            <div class="flex items-center space-x-4">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <a
+                                        class=""
+                                        href="{{route('logout')}}"
+                                    >
+                                        {{ __('Log out') }}
+                                    </a>
+                                </form>
+
+                                <div
+                                    x-data="{isOpen:false}"
+                                    x-cloak
+                                    @click.away="isOpen=false"
+                                    @keydown.escape.window="isOpen=false"
+                                    class="relative"
                                 >
-                                    {{ __('Log out') }}
-                                </a>
-                            </form>
+                                    <button class="relative"
+                                        @click=" isOpen=!isOpen "
+                                    >
+                                        <svg class="h-6 w-6 text-gray-500 " viewBox="0 0 20 20" fill="currentColor">
+                                            <path
+                                                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                                        </svg>
+                                        <div class="absolute rounded-full border border-white bg-red text-white text-xxs -top-1 -right-1 h-4 w-4 flex justify-center items-center">3</div>
+                                    </button>
+                                    <ul
+                                        class="ml-8 w-76 md:w-96 absolute bg-white shadow-dialog text-xs rounded-xl pt-3 text-left md:ml-8 top-8 md:top-6 z-10 max-h-128 overflow-y-auto md:-right-12 -right-24"
+                                        x-show.transition.origin.top="isOpen"
+                                        x-cloak
+                                        @click.away="isOpen=false"
+                                        @keydown.escape.window="isOpen=false"
+                                    >
+                                        <li class="">
+                                            <a href="#" class="hover:bg-gray-100 text-gray-700  flex px-5 py-2 transition duration-150 ease-in ">
+                                               <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="avatar"
+                                                class="w-10 h-10 rounded-full">
+                                                <div class="ml-4">
+                                                    <div class="line-clamp-6">
+                                                        <span class="font-semibold">adam huang</span>
+                                                        Commentd on
+                                                        <span class="font-semibold">This is my idea</span>:
+                                                        <span>"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis ut nulla, dolor rem aliquid voluptas quis harum, a maxime laboriosam culpa nisi eaque delectus, in quo voluptatum veniam! Labore, laborum?"</span>
+                                                    </div>
+                                                    <div class="text-xxs text-gray-500 mt-2">1 hour ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="border-t border-gray-300 text-center text-sm ">
+                                            <button class="hover:bg-gray-100 text-gray-700 w-full text-center font-semibold block px-5 py-2 transition duration-150 ease-in "> Mark all as read</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                    
+
                             @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                             @endif
@@ -47,8 +93,8 @@
                 @endif
                 <div>
                     <a href="#">
-                        <img 
-                            src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" 
+                        <img
+                            src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp"
                             alt="avatar"
                             class="w-10 h-10 rounded-full"
                         >
@@ -57,8 +103,8 @@
             </div>
         </header>
         <main class="container mx-auto flex max-w-custom flex-col md:flex-row">
-            <div class="w-70 mx-auto md:mx-0" style=""> 
-                <div 
+            <div class="w-70 mx-auto md:mx-0" style="">
+                <div
                     class=" border border-blue rounded-lg md:mt-16 bg-white md:sticky md:top-9"
                     style="
                           border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
@@ -72,10 +118,10 @@
                         <h3 class="font-semibold text-base">Add an idea</h3>
                         <p class="text-xs mt-3">
                         @auth
-                            Let us know what you would like and we will take a look over! 
-                        @else   
+                            Let us know what you would like and we will take a look over!
+                        @else
                             Please login to create an idea
-                        @endauth    
+                        @endauth
                         </p>
                     </div>
 
@@ -92,8 +138,8 @@
                                 Sign Up
                             </a>
                         </div>
-                    @endauth                    
-                </div>                
+                    @endauth
+                </div>
             </div>
             <div class="w-full md:w-175 px-2 md:px-0  md:ml-5" style="max-width:700px; margin-left:20px ">
                 <livewire:status-filters></livewire:status-filters>
@@ -108,11 +154,11 @@
 
         <!--Start Notification-->
         @if(session()->has('success_message'))
-            <x-notification-success 
+            <x-notification-success
                 :redirect="true"
                 message-to-display="{{ (session('success_message')) }}"
             ></x-notification-success>
-        @endif 
+        @endif
         <!--End Notification -->
         <livewire:scripts />
     </body>

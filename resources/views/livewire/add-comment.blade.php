@@ -1,43 +1,43 @@
-<div 
-    x-cloak 
-    x-data="{isOpen:false}" 
-    class="relative" 
-    @click.away="isOpen=false" 
+<div
+    x-cloak
+    x-data="{isOpen:false}"
+    class="relative"
+    @click.away="isOpen=false"
     @keydown.escape.window="isOpen=false"
     x-init="
-        Livewire.on('commentWasAdded',()=>{            
+        Livewire.on('commentWasAdded',()=>{
             isOpen = false;
         });
 
         Livewire.hook('message.processed',(message,component) =>{
-           
+
             if(['gotoPage','nextPage','previousPage'].includes(message.updateQueue[0].method))
             {
                 const firstComment = document.querySelector('.comment-container:first-child')
                 firstComment.scrollIntoView({ behavior:'smooth' })
             }
-           
-            if( ['commentWasAdded',statusWasUpdated].includes(message.updateQueue[0].payload.event)
-                && message.component.fingerprint.name=='idea-comments' ))
+
+            if( ['commentWasAdded','statusWasUpdated'].includes(message.updateQueue[0].payload.event)
+                && message.component.fingerprint.name=='idea-comments' )
             {
-                {{-- console.log(message); --}}
+
                 const lastComment = document.querySelector('.comment-container:last-child')
                 lastComment.scrollIntoView({ behavior:'smooth' })
                 lastComment.classList.add('bg-green-50');
-                 
+
                 setTimeout(()=>{
                     lastComment.classList.remove('bg-green-50');
                 },5000);
 
             }
 
-            
+
         })
     "
 >
-    <button type="button" 
-        @click=" isOpen = !isOpen 
-            {{-- if(isOpen)  
+    <button type="button"
+        @click=" isOpen = !isOpen
+            {{-- if(isOpen)
             {
                 $nextTick( ()=>{ $refs.comment.focus() } )
             } --}}
@@ -54,9 +54,9 @@
                     <textarea
                         x-ref="comment"
                         wire:model.defer="comment"
-                        name="post_comment" 
-                        id="post_comment" 
-                        cols="30" 
+                        name="post_comment"
+                        id="post_comment"
+                        cols="30"
                         rows="4"
                         class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 border-none"
                         placeholder="Go ahead, dont'be shy. Share your thoughts..."
@@ -82,15 +82,15 @@
                         <span class="ml-1">Attach</span>
                     </button>
                 </div>
-            
+
             </form>
         @else
             <div class="px-4 py-6">
 
                 <p class="font-normal">Please Login or create an account to post a comment</p>
                 <div class="flex item-center space-x-3 mt-8">
-                    <a 
-                        class="w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-lg hover:bg-blue-hover transition duration-150 ease-in px-6 py-2" 
+                    <a
+                        class="w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-lg hover:bg-blue-hover transition duration-150 ease-in px-6 py-2"
                         href="{{ route('login') }}">Login</a>
                     <a class="flex items-center justify-center w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-lg hover:bg-blue-hover transition duration-150 ease-in px-6 py-2" {{ route('register') }}">Sign Up</a>
 
@@ -98,6 +98,6 @@
             </div>
 
         @endauth
-        
+
     </div>
 </div>
