@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class CommentNotifications extends Component
 {
+
     public $notifications  ;
 
 
@@ -14,6 +15,7 @@ class CommentNotifications extends Component
 
     public function mount()
     {
+
         $this->notifications = collect();
     }
 
