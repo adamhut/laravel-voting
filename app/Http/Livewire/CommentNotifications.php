@@ -62,7 +62,7 @@ class CommentNotifications extends Component
 
     public function scrollToComment($notification)
     {
-        $idea = Idea::find($notification->data['id']);
+        $idea = Idea::find($notification->data['idea_id']);
         if (!$idea) {
             session()->flash('error_message', 'This Idea no longer exists!');
             return redirect()->route('idea.index');
@@ -76,10 +76,11 @@ class CommentNotifications extends Component
         }
 
         $comments = $idea->comments()->pluck('id');
+
         $ideaOfComment = $comments->search($comment->id);
 
-        $page = ceil($ideaOfComment / $comment->getPerPage());
-
+        $page = ( $ideaOfComment / $comment->getPerPage() )+1;
+        // dd($ideaOfComment ,$comment->getPerPage(), $comment->id,$comments);
         session()->flash('scrollToComment', $comment->id);
 
         return redirect()->route('idea.show', [
