@@ -1,4 +1,10 @@
-<div x-data="{isOpen:false}" x-cloak @click.away="isOpen=false" @keydown.escape.window="isOpen=false" class="relative">
+<div
+    wire:poll="getNotificationCount"
+    x-data="{isOpen:false}"
+    x-cloak @click.away="isOpen=false"
+    @keydown.escape.window="isOpen=false"
+    class="relative"
+>
     <button class="relative" @click="
             isOpen=!isOpen
             if(isOpen){
@@ -11,7 +17,8 @@
         </svg>
         @if($notificationCount > 0)
         <div
-            class="absolute rounded-full border border-white bg-red text-white text-xxs -top-1 -right-1 h-4 w-4 flex justify-center items-center">
+            class="absolute rounded-full border border-white bg-red text-white text-xxs -top-1 -right-1 h-4 w-4 flex justify-center items-center"
+        >
             {{ $notificationCount }}
         </div>
         @endif
