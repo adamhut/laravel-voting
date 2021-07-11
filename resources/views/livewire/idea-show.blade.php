@@ -22,7 +22,7 @@
                                 Spam Reports:{{$idea->spam_reports}}
                             </div>
                         @endif
-                    @endadmin    
+                    @endadmin
                     {{ $idea->description }}
                 </div>
                 <div class="mt-4 flex flex-col md:flex-row md:items-center justify-between">
@@ -36,11 +36,11 @@
                         <span class="text-gray-900">{{  $idea->comments()->count() }} Comments</span>
                     </div>
 
-                    <div 
-                        x-data="{isOpen:false}" 
+                    <div
+                        x-data="{isOpen:false}"
                         x-cloak
-                        @click.away="isOpen=false" 
-                        @keydown.escape.window="isOpen=false" 
+                        @click.away="isOpen=false"
+                        @keydown.escape.window="isOpen=false"
                         class="flex items-center space-x-2 mt-4 md:mt-0"
                     >
                         <div
@@ -63,7 +63,7 @@
                                 x-show.transition.orgin.top.left.duration.500ms="isOpen">
                                 @can('update',$idea)
                                 <li>
-                                    <a 
+                                    <a
                                         href="#"
                                         @click.prevent="
                                             isOpen = false;
@@ -111,7 +111,7 @@
                                     @endif
                                 @endadmin
                             </ul>
-                        </div> 
+                        </div>
                         @endauth
                     </div>
                     <div class="flex items-center mt-4 md:hidden md:mt-0">
@@ -148,7 +148,7 @@
         </div>
         <div class="hidden md:flex items-center space-x-3 ">
             <div class="bg-white font-semibold text-center rounded-xl px-3 py-2 shadow-sm">
-                <span class="text-xl leading-snug @if($hasVoted) text-blue @endif"> {{ $votesCount }}</span>【
+                <span class="text-xl leading-snug @if($hasVoted) text-blue @endif"> {{ $votesCount }}</span>
                 <div class="text-gray-400 text-xs leading-none">Votes</div>
             </div>
 

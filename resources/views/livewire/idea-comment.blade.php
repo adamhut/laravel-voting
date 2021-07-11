@@ -53,7 +53,7 @@
                         x-cloak
                         x-data="{isOpen:false}"
                         @click.away="isOpen=false"
-                        class="flex items-center space-x-2 md:mt-6 bg-gray-900"
+                        class="flex items-center space-x-2 md:mt-6"
                         @keydown.escape.window="isOpen=false"
                     >
                         <div class="relative">
