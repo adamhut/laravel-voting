@@ -17,7 +17,7 @@ class DeleteComment extends Component
     public function setDeleteComment($commentId)
     {
         $this->comment = Comment::findOrFail($commentId);
-        
+
 
         $this->emit('deleteCommentWasSet');
     }
@@ -27,6 +27,8 @@ class DeleteComment extends Component
         if (auth()->guest() || auth()->user()->cannot('delete', $this->comment)) {
             abort(Response::HTTP_FORBIDDEN);
         }
+
+
         Comment::destroy($this->comment->id);
 
         $this->comment = null;

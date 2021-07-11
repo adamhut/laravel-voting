@@ -35,7 +35,7 @@ class IdeaComments extends Component
     public function statusWasUpdated()
     {
         $this->idea->refresh();
-        
+
         $this->gotoPage($this->idea->comments()->paginate()->lastPage());
     }
 
@@ -50,7 +50,7 @@ class IdeaComments extends Component
     {
         return view('livewire.idea-comments',[
             // 'comments' => $this->idea->comments()->paginate()->withQueryString() ,
-            
+
             'comments' => Comment::with(['user','status'])->where('idea_id',$this->idea->id)->paginate()->withQueryString(),
         ]);
     }

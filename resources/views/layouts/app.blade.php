@@ -118,6 +118,17 @@
             ></x-notification-success>
         @endif
         <!--End Notification -->
+        <!--Start Notification-->
+            @if(session()->has('error_message'))
+                <x-notification-success
+                    type="error"
+                    :redirect="true"
+                    message-to-display="{{ (session('error_message')) }}"
+
+                >
+                </x-notification-success>
+            @endif
+        <!--End Notification -->
         <livewire:scripts />
     </body>
 </html>

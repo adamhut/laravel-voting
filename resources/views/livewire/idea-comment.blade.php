@@ -1,4 +1,5 @@
- <div 
+ <div
+    id="comment-{{ $comment->id }}"
     class="comment-container relative  mt-4 bg-white rounded-xl flex  transition duration-500 ease-in  @if($comment->is_status_update)   is-status-update @endif"
 >
 {{-- {{ 'status-'.Str::kebab($comment->status->name)}} --}}
@@ -10,7 +11,7 @@
             @if($comment->user->isAdmin())
                 <div class="md:text-center text-blue uppercase text-xxs font-bold mt-2">Admin</div>
             @endif
-        
+
         </div>
 
         <div class="md:mx-4 w-full flex-1 flex flex-col ">
@@ -38,7 +39,7 @@
             </div>
             <div class="flex items-center justify-between mt-4 md:mt-0">
                 <div class="flex items-center text-xxs font-semibold space-x-2 text-gray-400">
-                    
+
                     <span class="font-bold @if($comment->is_status_update) text-blue @endif text-gray-800">{{ $comment->user->name }}</span>
                     <span>&bull;</span>
                     @if(auth()->check() && auth()->user()->id == $ideaUserId)
@@ -47,12 +48,12 @@
                     @endif
                     <span>{{ $comment->created_at->diffForHumans() }} </span>
                 </div>
-                @auth    
-                    <div 
-                        x-cloak 
-                        x-data="{isOpen:false}" 
-                        @click.away="isOpen=false"  
-                        class="flex items-center space-x-2 md:mt-6 bg-gray-900" 
+                @auth
+                    <div
+                        x-cloak
+                        x-data="{isOpen:false}"
+                        @click.away="isOpen=false"
+                        class="flex items-center space-x-2 md:mt-6 bg-gray-900"
                         @keydown.escape.window="isOpen=false"
                     >
                         <div class="relative">
@@ -68,10 +69,10 @@
                             </button>
                             <ul x-show.transition.orgin.top.left.duration.500ms="isOpen"
                                 class="ml-8 w-44 absolute z-10 font-semibold bg-white shadow-card rounded-xl py-3 text-left md:ml-8 top-8 right-0 md:left-0">
-                                
+
                                 @can('update',$comment)
                                     <li>
-                                        <a href="#" 
+                                        <a href="#"
                                             @click.prevent="
                                                 isOpen = false;
                                                 Livewire.emit('setEditComment',{{ $comment->id }})
@@ -82,10 +83,10 @@
                                         </a>
                                     </li>
                                 @endcan
-                              
+
                                @can('delete',$comment)
                                <li>
-                                    <a href="#" 
+                                    <a href="#"
                                         @click.prevent="
                                             Livewire.emit('setDeleteComment',{{ $comment->id }})
                                             {{-- $dispatch('custom-show-edit-comment-modal') --}}
@@ -96,7 +97,7 @@
                                 </li>
                                 @endcan
                                 <li>
-                                    <a href="#" 
+                                    <a href="#"
                                         @click.prevent="
                                             Livewire.emit('setMarkAsSpamComment',{{ $comment->id }})
                                             {{-- $dispatch('custom-show-edit-comment-modal') --}}
