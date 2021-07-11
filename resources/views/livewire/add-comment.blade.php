@@ -95,8 +95,16 @@
                 <div class="flex item-center space-x-3 mt-8">
                     <a
                         class="w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-lg hover:bg-blue-hover transition duration-150 ease-in px-6 py-2"
-                        href="{{ route('login') }}">Login</a>
-                    <a class="flex items-center justify-center w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-lg hover:bg-blue-hover transition duration-150 ease-in px-6 py-2" {{ route('register') }}">Sign Up</a>
+                        wire.click.prevent="redirectToLogin"
+                        >
+                        Login
+                    </a>
+                    <a
+                        class="flex items-center justify-center w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-lg hover:bg-blue-hover transition duration-150 ease-in px-6 py-2"
+                        wire.click.prevent="redirectToRegister"
+                    >
+                        Sign Up
+                    </a>
 
                 </div>
             </div>

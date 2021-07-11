@@ -7,10 +7,12 @@ use App\Models\Vote;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Http\Response;
+use App\Http\Livewire\Traits\WithAuthRedirects;
 
 class CreateIdea extends Component
 {
 
+    use WithAuthRedirects;
     public $title;
     public $category = 1 ;
     public $description = '';
@@ -49,11 +51,11 @@ class CreateIdea extends Component
 
         $this->reset();
 
-        return redirect()->route('idea.index');            
+        return redirect()->route('idea.index');
 
-      
+
     }
-   
+
 
 
 
@@ -61,7 +63,7 @@ class CreateIdea extends Component
 
     public function render()
     {
-     
+
         return view('livewire.create-idea',[
             'categories' => Category::get(),
         ]);

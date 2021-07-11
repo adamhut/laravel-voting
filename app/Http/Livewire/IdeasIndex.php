@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 class IdeasIndex extends Component
 {
     // public $ideas;
-    use WithPagination;
+    use WithPagination, WithAuthRedirects;
 
     public $status = 'All';
     public $category = '';
@@ -29,7 +29,7 @@ class IdeasIndex extends Component
 
     protected $listeners =[
         'queryStringUpdatedStatus'=> 'queryStringUpdatedStatus',
-        //queryStringUpdatedStatus //or just htis 
+        //queryStringUpdatedStatus //or just htis
     ];
 
     public function mouted()
@@ -40,9 +40,10 @@ class IdeasIndex extends Component
 
     public function updatedFilter()
     {
-        if($this->filter ==='My Ideas' && !auth()->check())
+        if($this->filter ==='My Ideas' && auth()->guest())
         {
-            return redirect()->route('login');
+            return $this->redirectToLogin();
+            // return redirect()->route('login');
         }
     }
 
@@ -78,7 +79,7 @@ class IdeasIndex extends Component
             ->withVotedByUser(auth()->user())
             // ->when(request()->has('status') && request()->status !=='All',function($query) use($statuses){
             //     return $query->where('status_id', $statuses->get(request()->status));
-            // })   
+            // })
             ->when($this->status && $this->status !== 'All', function ($query) use ($statuses) {
                 return $query->where('status_id', $statuses->get($this->status));
             })
@@ -87,7 +88,7 @@ class IdeasIndex extends Component
             })
             ->when($this->filter  && $this->filter === 'Top Voted',  function ($query) {
                 return $query->orderByDesc('votes_count');
-            }) 
+            })
             ->when($this->filter && auth()->check() && $this->filter === 'My Ideas',  function ($query) {
                 return $query->where('user_id',auth()->user()->id);
             })
@@ -102,7 +103,7 @@ class IdeasIndex extends Component
             })
             ->when($this->search  && strlen($this->search) >=  '3',  function ($query) {
                 return $query->where('title','like','%'.$this->search.'%');
-            })               
+            })
             ->orderBy('id', 'desc')
             ->simplePaginate()
             ->withQueryString();
