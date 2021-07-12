@@ -23,7 +23,7 @@
                             </div>
                         @endif
                     @endadmin
-                    {{ $idea->description }}
+                        {!! nl2br(e($idea->description)) !!}
                 </div>
                 <div class="mt-4 flex flex-col md:flex-row md:items-center justify-between">
                     <div class="flex items-center text-xxs font-semibold space-x-2 text-gray-400 mt-3 md:mt-0">

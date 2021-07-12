@@ -54,8 +54,7 @@
                 <img
                     src="{{ asset('images/no-ideas.svg') }}"
                     alt="No Ideas"
-                    class="mx-auto"
-                    style="mix-blend-mode: luminosity"
+                    class="mx-auto bg-blend-luminosity "
                 >
                 <div class="text-gray-400 text-center font-bold mt-6">No ideas were found...</div>
             </div>

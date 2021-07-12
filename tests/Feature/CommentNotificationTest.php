@@ -204,7 +204,7 @@ class CommentNotificationTest extends TestCase
             ->call('addComment')
             ->assertEmitted('commentWasAdded');
 
-        $idea->comments()->delete();
+        // $idea->comments()->delete();
         $idea->delete();
 
         Livewire::actingAs($user)

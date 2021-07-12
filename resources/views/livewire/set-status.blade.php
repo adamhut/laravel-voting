@@ -1,14 +1,18 @@
-<div 
-    x-cloak 
-    class="relative" 
-    x-data="{isOpen:false}" 
+<div
+    x-cloak
+    class="relative"
+    x-data="{isOpen:false}"
     x-init="
-        window.livewire.on('statusWasUpdated',()=>{
+        Livewire.on('statusWasUpdated',()=>{
+            isOpen = false;
+        });
+
+        Livewire.on('statusWasUpdatedError',()=>{
             isOpen = false;
         });
     "
 
-    @click.away="isOpen=false" 
+    @click.away="isOpen=false"
     @keydown.escape.window="isOpen=false"
 >
     <button type="button" @click="isOpen =!isOpen"
@@ -60,10 +64,10 @@
                 </div>
             </div>
             <div>
-                <textarea 
-                    name="update_comment" 
-                    id="update_comment" 
-                    cols="30" 
+                <textarea
+                    name="update_comment"
+                    id="update_comment"
+                    cols="30"
                     rows="4"
                     wire:model="comment"
                     class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 border-none"
@@ -83,17 +87,17 @@
                     <span class="ml-1">Attach</span>
                 </button>
                 <button type="submit"
-                    class="flex items-center justify-center w-full md:w-1/2 h-11 text-sm bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white disabled:opacity-50"   
+                    class="flex items-center justify-center w-full md:w-1/2 h-11 text-sm bg-blue font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 text-white disabled:opacity-50"
                 >
                     Update
                 </button>
             </div>
             <div>
                 <label class="inline-flex items-center text-gray-700 font-normal">
-                    <input 
-                        wire:model="notifyAllVoters" 
-                        type="checkbox"  
-                        name="notify_voters" 
+                    <input
+                        wire:model="notifyAllVoters"
+                        type="checkbox"
+                        name="notify_voters"
                         class="rounded bg-gray-200"
                     >
                     <span class="ml-2 ">Notoify all voters</span>

@@ -4,16 +4,16 @@
 
                     {{-- console.log($event.target.closest('.idea-container').querySelector('.idea-link').click() ); --}}
                     const target= clicked.tagName.toLowerCase();
-                    
+
                     {{-- console.log(target); --}}
 
-                    const ignores = ['button','svg','a','path']; 
+                    const ignores = ['button','svg','a','path'];
 
                     if(ignores.includes(target))
                     {
                         return;
                     }
-                    
+
                     clicked.closest('.idea-container').querySelector('.idea-link').click();
 
                 "
@@ -43,7 +43,7 @@
     <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
         <div class="flex-none mx-2 md:mx-0">
             <a href="#">
-                {{-- <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" 
+                {{-- <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1"
                                 alt="avatar" class="w-14 h-14 rounded-xl"> --}}
                 <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
 
@@ -75,7 +75,7 @@
                 <div class="flex items-center space-x-2 " x-data="{isOpen:false}"
                     @click.away="isOpen=false" x-cloak @keydown.escape.window="isOpen=false">
                     <div class="{{ 'status-'.Str::kebab($idea->status->name)}} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
-                    
+
                 </div>
                 <div class="flex items-center mt-4 md:hidden md:mt-0">
                     <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
@@ -88,13 +88,13 @@
                         class="w-20 bg-blue border border-blue text-white font-bold text-xxs uppercase rounded-xl hover:border-blue-hover transition duration-150 ease-in px-4 py-3 -mx-5">
                         Voted
                     </button>
-                        
+
                     @else
                         <button
                             wire:click.prevent="vote"
                             class="w-20 bg-gray-200 border border-gray-200 text-white font-bold text-xxs uppercase rounded-xl hover:border-gray-300 transition duration-150 ease-in px-4 py-3 -mx-5">
                             Vote
-                        </button>    
+                        </button>
                     @endif
                 </div>
             </div>

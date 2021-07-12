@@ -35,98 +35,35 @@ class StatusTest extends TestCase
             'description' => 'Description of my first idea',
         ]);
 
-        Idea::factory()->create([
+        Idea::factory(2)->create([
             'user_id' => $user->id,
             'category_id'   => $categoryOne->id,
             'status_id'     =>  $statusConsidering->id,
             'description' => 'Description of my first idea',
         ]);
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusConsidering->id,
-            'description' => 'Description of my first idea',
-        ]);
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusInProgress->id,
-            'description' => 'Description of my first idea',
-        ]);
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusInProgress->id,
-            'description' => 'Description of my first idea',
-        ]);
-        Idea::factory()->create([
+
+        Idea::factory(3)->create([
             'user_id' => $user->id,
             'category_id'   => $categoryOne->id,
             'status_id'     =>  $statusInProgress->id,
             'description' => 'Description of my first idea',
         ]);
 
-        Idea::factory()->create([
+
+        Idea::factory(4)->create([
             'user_id' => $user->id,
             'category_id'   => $categoryOne->id,
             'status_id'     =>  $statusImplemented->id,
             'description' => 'Description of my first idea',
         ]);
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusImplemented->id,
-            'description' => 'Description of my first idea',
-        ]);
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusImplemented->id,
-            'description' => 'Description of my first idea',
-        ]);
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusImplemented->id,
-            'description' => 'Description of my first idea',
-        ]);
-        Idea::factory()->create([
+
+        Idea::factory(5)->create([
             'user_id' => $user->id,
             'category_id'   => $categoryOne->id,
             'status_id'     =>  $statusClosed->id,
             'description' => 'Description of my first idea',
         ]);
 
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusClosed->id,
-            'description' => 'Description of my first idea',
-        ]);
-
-
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusClosed->id,
-            'description' => 'Description of my first idea',
-        ]);
-
-
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusClosed->id,
-            'description' => 'Description of my first idea',
-        ]);
-
-
-        Idea::factory()->create([
-            'user_id' => $user->id,
-            'category_id'   => $categoryOne->id,
-            'status_id'     =>  $statusClosed->id,
-            'description' => 'Description of my first idea',
-        ]);       
 
         // dd(Status::getCount());
         $this->assertEquals(15,Status::getCount()['all_statuses']);

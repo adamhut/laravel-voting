@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot name="title">
+        {{ $idea->title }} | Laracast
+    </x-slot>
     {{-- @dump(url()->previous()) --}}
     {{-- @dump(url()->full()) --}}
     <div class="flex items-center justify-between">
@@ -12,14 +15,14 @@
 
     </div>
 
-    <livewire:idea-show 
-        :idea="$idea" 
-        :votesCount="$votesCount" 
+    <livewire:idea-show
+        :idea="$idea"
+        :votesCount="$votesCount"
     />
-    
+
     <x-notification-success ></x-notification-success>
 
-    <livewire:idea-comments 
+    <livewire:idea-comments
         :idea="$idea"
     >
     </livewire:idea-comments>
@@ -27,5 +30,5 @@
 
     <x-modal-container :idea="$idea"></x-modal-container>
 
-    
+
 </x-app-layout>
