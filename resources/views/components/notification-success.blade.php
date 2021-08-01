@@ -41,6 +41,7 @@
             });
 
             Livewire.on('statusWasUpdatedError',message => {
+                isError=true;
                 showNotification(message);
             });
 
