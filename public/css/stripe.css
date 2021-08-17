@@ -95,9 +95,42 @@ button:hover{
 	color: lightgray;
 }
 
-.menu {
+.menu-background{
 	position: absolute;
+	top:0;
+	left: 0;
+	width: 100px;
+	height: 100px;
 	background: white;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	opacity: 0;
+	transition: all 200ms linear;
+}
+
+.menu-background.open{
+	opacity: 1;
+}
+
+.arrow{
+	position: absolute;
+	width:14px;
+	height:14px;
+	background:white;
+	transform: rotate(45deg) translateY(-50%);
+
+}
+/* .menu-background.next{
+	top:200px;
+	left: 200px;
+	width: 300px;
+	height: 300px;
+} */
+
+.menu {
+	position: absolute ;
+	/* background: rgba( 0, 255 , 0, 0.5); */
 	border-radius: 5px;
 	padding: 10px;
 	z-index: 10;
@@ -123,11 +156,11 @@ button:hover{
 .menu.menu-enter{
 	display: block;
 	opacity: 0;
-	transform: translateY(-20px);
+	/* transform: translateY(-20px); */
 }
 
 .menu.menu-enter-active {
-	opacity: 100;
+	opacity: 1;
 	transform: translateY(0px);
 }
 
@@ -140,5 +173,5 @@ button:hover{
 .menu.menu-leave-active{
 	display: block;
 	opacity: 0;
-	transform: translateY(-40px);
+	/* transform: translateY(-40px); */
 }
