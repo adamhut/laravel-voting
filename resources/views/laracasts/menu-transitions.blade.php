@@ -14,9 +14,30 @@
     <header>
         <nav>
             <ul>
-                <li><button>Product</button></li>
-                <li><button>Developers</button></li>
-                <li><button>Company</button></li>
+                <li>
+                    <button>Products</button>
+                    <div class="menu menu-products">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed quia similique aperiam quibusdam natus corporis impedit commodi dolore repellendus, consequuntur perferendis, ut voluptas maxime voluptatem quam tempore cupiditate modi.
+                    </div>
+                </li>
+
+
+                <li>
+                    <button>Developers</button>
+                    <div class="menu menu-developers">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed quia similique aperiam quibusdam natus
+                        corporis impedit commodi dolore repellendus, consequuntur perferendis, ut voluptas maxime voluptatem quam tempore
+                        cupiditate modi.
+                    </div>
+                </li>
+                <li>
+                    <button>Company</button>
+                    <div class="menu menu-company">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed quia similique aperiam quibusdam natus
+                        corporis impedit commodi dolore repellendus, consequuntur perferendis, ut voluptas maxime voluptatem quam tempore
+                        cupiditate modi.
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
