@@ -13,8 +13,8 @@
 <body>
     <header>
         <div class="menu-background">
-            <div class="arrow"></div>
         </div>
+        <div class="arrow"></div>
         <nav>
             <ul>
                 <li>
