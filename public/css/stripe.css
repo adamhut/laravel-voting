@@ -142,26 +142,14 @@ button:hover{
 	position: absolute ;
 	/* background: rgba( 0, 255 , 0, 0.5); */
 	border-radius: 5px;
-	padding: 10px;
+	 padding: 24px 40px;
 	z-index: 10;
 	top:100%;
 	display: none;
 	transition: opacity 200ms ease-in,transform 500ms linear;
 
 }
-.menu-products{
-	width: 300px;
 
-}
-
-.menu-developers{
-	width: 500px;
-
-}
-.menu-company{
-	width: 400px;
-
-}
 
 .menu.menu-enter{
 	display: block;
@@ -184,4 +172,149 @@ button:hover{
 	display: block;
 	opacity: 0;
 	/* transform: translateY(-40px); */
+}
+
+
+.menu-products {
+  width: 560px;
+}
+
+.menu-products .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+}
+
+.menu-products h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.menu-products ul {
+  display: block;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.menu-products li {
+  display: block;
+  padding: 0;
+}
+
+.menu-products li:not(:first-child) {
+  margin-top: 18px;
+}
+
+.menu-products li a {
+  display: flex;
+  align-items: center;
+  color: #4B5563;
+  text-decoration: none;
+}
+
+.menu-products li a:hover {
+  color: #111827;
+}
+
+.menu-products li a svg {
+  width: 28px;
+  height: 28px;
+}
+
+.menu-products li a > div {
+  margin-left: 8px;
+}
+
+.menu-products .title {
+  font-weight: bold;
+}
+
+.menu-products .description {
+  font-size: 14px;
+  color: #6B7280
+}
+
+.menu-developers {
+  width: 400px;
+}
+
+.menu-developers h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.menu-developers p {
+  font-size: 14px;
+}
+
+.menu-developers .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+  margin-top: 24px;
+}
+
+.menu-developers h4 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.menu-developers ul {
+  display: block;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.menu-developers li {
+  display: block;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.menu-developers li a {
+  color: #4B5563;
+  text-decoration: none;
+}
+
+.menu-developers li a:hover {
+  color: #111827;
+}
+
+.menu-company {
+  width: 200px;
+}
+
+.menu-company ul {
+  display: block;
+  margin: 0;
+}
+
+.menu-company li {
+  display: block;
+  padding: 0;
+}
+
+.menu-company li:not(:first-child) {
+  margin-top: 18px;
+}
+
+.menu-company li a {
+  display: flex;
+  align-items: center;
+  color: #4B5563;
+  text-decoration: none;
+}
+
+.menu-company li a:hover {
+  color: #111827;
+}
+
+.menu-company li a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.menu-company li a span {
+  margin-left: 8px;
 }
