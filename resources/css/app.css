@@ -88,5 +88,7 @@
 }
 
 .status-closed, .status-closed:before {
-    @apply bg-red text-white;
+    @apply bg-red-500 text-white;
 }
+
+

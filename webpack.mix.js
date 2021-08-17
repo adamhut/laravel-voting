@@ -16,7 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
-
         // require("@tailwindcss/jit"),
         // require("postcss-import")
     ]);
