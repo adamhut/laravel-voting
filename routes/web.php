@@ -26,6 +26,11 @@ Route::get('/ideas/{idea:slug}', [IdeaController::class, 'show'])->name('idea.sh
 Route::view('/laracasts/reproduce/menu-transitions', 'laracasts.menu-transitions');
 
 Route::view('/laracasts/reproduce/image-pin-while-scrolling', 'laracasts.image-pin-while-scrolling');
+
+
+Route::view('/laracasts/reproduce/event-list', 'laracasts.event-list');
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

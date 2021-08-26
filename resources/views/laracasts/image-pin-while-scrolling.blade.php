@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stripe Meuu</title>
+    <title>Stripe Menu</title>
     <!-- Styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
     <!-- Styles -->
@@ -210,7 +210,7 @@
                 </div>
                 <div class="col-2 ml-4">
                     <div>
-                        <img src="/images/image2.png" class="image-twov invisible" alt="screenshot">
+                        <img src="/images/image2.png" class="image-two invisible" alt="screenshot">
                     </div>
                 </div>
             </div>

@@ -74,4 +74,4 @@ const observerThree = new IntersectionObserver(entries => {
 
 }, options);
 
-observerThree.observe(document.querySelector('<div id="pixel-to-watch-three"> </div>'));
+observerThree.observe(document.querySelector('#pixel-to-watch-three'));
