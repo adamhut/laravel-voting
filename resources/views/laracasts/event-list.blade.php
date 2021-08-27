@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/laracasts.css') }}">
-    {{-- <script src="/js/event-list.js" defer></script> --}}
+
 </head>
 <body>
-    <div class="container mx-auto px-4 xl:px-48 my-8 ">
+    <div id="app" class="container mx-auto px-4 xl:px-48 my-8 ">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, unde. Fuga odit eos aliquid obcaecati sunt facere fugiat in tempora, ipsam porro corporis nobis eum ad labore, voluptate distinctio officiis!
         Debitis obcaecati enim possimus voluptate quisquam, neque fugiat magnam doloremque animi perspiciatis reprehenderit, ipsam quaerat ullam et totam. Libero illum, esse voluptate itaque maiores reprehenderit tenetur tempore repellendus voluptatem quae!
         Suscipit nemo dolorem mollitia esse quam laudantium fugiat laboriosam? Ipsa porro dicta vel nisi. Est vero magnam saepe quasi beatae nobis, quam dolorem, molestias aut dicta officiis. Soluta, recusandae maiores!
@@ -92,12 +92,8 @@
                     <div class="w-32 flex justify-center items-center">17:30</div>
                 </div>
                 <div class="h-16 w-table flex divide-x divide-white" >
-                    <button class="w-32 event-block bg-red-600 hover:bg-red-700 text-white whitespace-nowrap overflow-hidden">
-                        <div class="pl-4">
-                            <div class="font-semibold">Title of Event</div>
-                            <div class="text-xs text-gray-200 tracking-wider">9:00 - 10:30 AM EDT</div>
-                        </div>
-                    </button>
+                    <event-slot ></event-slot>
+
                     <button class="w-32 event-block bg-red-600 hover:bg-red-700 text-white whitespace-nowrap overflow-hidden">
                         <div class="pl-4">
                             <div class="font-semibold">Title of Event</div>
@@ -127,13 +123,10 @@
                 <div class="h-16 w-table " >
 
                 </div>
-
-
-
             </div>
 
         </div>
     </div>
-
+<script src="{{ mix('js/laracasts.js') }}"></script>
 </body>
 </html>

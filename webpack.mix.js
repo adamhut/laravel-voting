@@ -11,14 +11,24 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    // .postCss('resources/css/app.css', 'public/css', [
-    //     require('postcss-import'),
-    //     require('tailwindcss'),
-    //     require('autoprefixer'),
-    //     // require("@tailwindcss/jit"),
-    //     // require("postcss-import")
-    // ]);
+// mix.js('resources/js/app.js', 'public/js')
+//     // .postCss('resources/css/app.css', 'public/css', [
+//     //     require('postcss-import'),
+//     //     require('tailwindcss'),
+//     //     require('autoprefixer'),
+//     //     // require("@tailwindcss/jit"),
+//     //     // require("postcss-import")
+//     // ]);
+//     .postCss('resources/css/laracasts.css', 'public/css', [
+//         require('postcss-import'),
+//         require('tailwindcss'),
+//         require('autoprefixer'),
+//         // require("@tailwindcss/jit"),
+//         // require("postcss-import")
+//     ]);
+
+mix.js('resources/js/laracasts.js', 'public/js')
+    .vue()
     .postCss('resources/css/laracasts.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
