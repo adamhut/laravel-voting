@@ -4,3 +4,7 @@
 
 @import 'tailwindcss/utilities';
 
+[v-cloak] {
+    @apply hidden;
+}
+
