@@ -40,7 +40,7 @@
                                 leave-to="opacity-0 scale-95"
                             >
                                 <div
-                                    class="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
+                                    class="inline-block w-full max-w-md p-6 my -8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
                                 >
                                     <button class="absolute top-3 right-3 "  @click="closeModal">
                                         <XIcon class="h-4 w-4 text-gray-500 hover:text-gray-800"/>
