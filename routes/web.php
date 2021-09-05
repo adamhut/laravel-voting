@@ -29,6 +29,8 @@ Route::view('/laracasts/reproduce/image-pin-while-scrolling', 'laracasts.image-p
 
 Route::view('/laracasts/reproduce/event-list', 'laracasts.event-list');
 
+Route::view('/laracasts/headless-ui/menu-dropdown', 'laracasts.menu-dropdown');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

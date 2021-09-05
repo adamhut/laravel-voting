@@ -13,18 +13,21 @@ require('./bootstrap');
 import { createApp, ref } from 'vue';
 
 import EventSlot from './components/EventSlot.vue'
+import TestMenu from './components/TestMenu.vue'
 import EventSlotEmpty from './components/EventSlotEmpty.vue'
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import { TabGroup, TabList, Tab, TabPanels, TabPanel} from '@headlessui/vue'
 
 createApp({
     components: {
         EventSlot,
         EventSlotEmpty,
+        TestMenu,
         TabGroup,
         TabList,
         Tab,
         TabPanels,
         TabPanel,
+
     },
 
 }).mount("#app")

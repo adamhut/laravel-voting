@@ -389,7 +389,6 @@
                 <tab-panel>Content 3</tab-panel>
             </tab-panels>
         </tab-group>
-
     </div>
 <script src="{{ mix('js/laracasts.js') }}"></script>
 </body>
