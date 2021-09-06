@@ -32,6 +32,8 @@ Route::view('/laracasts/reproduce/event-list', 'laracasts.event-list');
 Route::view('/laracasts/headless-ui/menu-dropdown', 'laracasts.menu-dropdown');
 Route::view('/laracasts/headless-ui/modal', 'laracasts.modal');
 
+Route::view('/laracasts/headless-ui/radio-group', 'laracasts.radio-group');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -15,6 +15,7 @@ import { createApp, ref } from 'vue';
 import EventSlot from './components/EventSlot.vue'
 import TestMenu from './components/TestMenu.vue'
 import TestModal from './components/TestModal.vue'
+import TestRadioGroup from './components/TestRadioGroup.vue'
 import EventSlotEmpty from './components/EventSlotEmpty.vue'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel} from '@headlessui/vue'
 
@@ -24,6 +25,7 @@ createApp({
         EventSlotEmpty,
         TestMenu,
         TestModal,
+        TestRadioGroup,
         TabGroup,
         TabList,
         Tab,

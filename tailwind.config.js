@@ -15,6 +15,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+                'retro': ['"Press Start 2P"','cursive']
             },
             colors:{
                 'gray-background':'#f7f8fc',
